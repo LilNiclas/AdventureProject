@@ -36,11 +36,11 @@ public class UserInterface {
                     System.out.println("Hjælpe informationer"); //todo indsæt hjælpe info til brugen
                     break;
                 case "look":
-                    System.out.println("Looking around"); //todo give beskrivelse af room
-                    System.out.println("I'm Looking around and I see");
-
+                    System.out.println("Looking around..."); //todo give beskrivelse af room
+                    System.out.println("I'm Looking around and I that I'm in ");
                     System.out.println(adventure.getCurrentRoom().getName());
-
+                    System.out.println("Looking around i see");
+                    System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
                 default:
                     System.out.println("Invalid input");
