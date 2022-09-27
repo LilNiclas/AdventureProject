@@ -16,30 +16,62 @@ public class UserInterface {
             String userInput = scan.nextLine();
 
             switch (userInput) {
-                case "go north":
-                    System.out.println("Going north");
-                    break;
-                case "go east":
-                    System.out.println("Going east");
-                    break;
-                case "go south":
-                    System.out.println("Going south");
-                    break;
-                case "go west":
-                    System.out.println("Going west");
-                    break;
-                case "exit":
+                //go north
+                case "go north", "north", "n" -> {
+                    if (adventure.goNorth()) {
+                        System.out.println("Going north");
+                        System.out.println(adventure.getCurrentRoom().getName());
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                    } else {
+                        System.out.println("Can't go that way");
+                    }
+                }
+
+                //go east
+                case "go east", "east", "e" -> {
+                    if (adventure.goEast()) {
+                        System.out.println("Going east");
+                        System.out.println(adventure.getCurrentRoom().getName());
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                    } else {
+                        System.out.println("Can't go that way");
+                    }
+                }
+
+                // go south
+                case "go south", "south", "s" -> {
+                    if (adventure.goSouth()) {
+                        System.out.println("Going south");
+                        System.out.println(adventure.getCurrentRoom().getName());
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                    } else {
+                        System.out.println("Can't go that way");
+                    }
+                }
+
+                //go west
+                case "go west", "west", "w" -> {
+                    if (adventure.goWest()) {
+                        System.out.println("Going west");
+                        System.out.println(adventure.getCurrentRoom().getName());
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                    } else {
+                        System.out.println("Can't go that way");
+                    }
+                }
+
+                case "exit" -> {
                     System.out.println("Exiting program...");
                     isRunning = false;
-                    break;
-                case "help":
+                }
+
+                case "help" -> {
                     System.out.println("Hjælpe informationer"); //todo indsæt hjælpe info til brugen
-                    break;
-                case "look":
-                    System.out.println("Looking around..."); //todo give beskrivelse af room
-                    System.out.println("I'm Looking around and I that I'm in ");
+                }
+
+                case "look", "look around" -> {
+                    System.out.println("In front of me i see"); //todo give beskrivelse af room
                     System.out.println(adventure.getCurrentRoom().getName());
-                    System.out.println("Looking around i see");
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
                 default:
