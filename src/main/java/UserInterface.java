@@ -1,9 +1,11 @@
 import java.util.Scanner;
+// Userinterface Class is the Class that takes the input from the user
 
 public class UserInterface {
     Scanner scan = new Scanner(System.in);
 
     private Adventure adventure = new Adventure();
+
 
     public void userInput() {
         boolean isRunning = true;
@@ -77,12 +79,13 @@ public class UserInterface {
 
                 case "look", "look around" -> {
                     System.out.println("In front of me i see"); //todo give beskrivelse af room
-                    System.out.println(adventure.getCurrentRoom().getName());
-                    System.out.println(adventure.getCurrentRoom().getDescription());
-                    break;
-                default:
+                    System.out.println(adventure.getPlayer().getCurrentRoom().getName());
+                    System.out.println(adventure.getPlayer().getCurrentRoom().getDescription());
+                }
+                default -> {
                     System.out.println("Invalid input");
-                    break;
+                }
+
             }
         }
 

@@ -1,4 +1,6 @@
 public class Adventure {
+// The Adventure class is the controler for the whole game
+// But does not control the player
 
     public Map map = new Map();
     public Player player = new Player();
@@ -12,7 +14,7 @@ public class Adventure {
         return player.move(direction);
     }
 
-    
+
     public Adventure() {
         player.setCurrentRoom(map.getStartRoom());
     }

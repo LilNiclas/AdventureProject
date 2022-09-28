@@ -1,4 +1,5 @@
 public class Map {
+// Map Class builds the map and gives the starting room to the Adventure class
 
     public Map() {
         setRooms();

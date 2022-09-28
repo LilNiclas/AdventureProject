@@ -1,4 +1,6 @@
 public class Room {
+    //The Room Class constructs the attributes for the rooms
+
     private String name;
     private String description;
     private Room north;
@@ -18,6 +20,10 @@ public class Room {
     public Room(String name, String description){
         this.name = name;
         this.description = description;
+        this.north = null;
+        this.east = null;
+        this.south = null;
+        this.west = null;
     }
 
     //Getter
