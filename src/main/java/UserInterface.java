@@ -6,11 +6,8 @@ public class UserInterface {
     private Adventure adventure = new Adventure();
 
     public void userInput() {
-
-        System.out.println("Welcome to Adventure");
-
         boolean isRunning = true;
-
+        System.out.println("Welcome to Adventure");
 
         while (isRunning) {
 
