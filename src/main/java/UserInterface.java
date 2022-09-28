@@ -13,22 +13,30 @@ public class UserInterface {
 
 
         while (isRunning) {
-            String userInput = scan.nextLine();
 
-            switch (userInput) {
+            String userInput = scan.nextLine();
+            String[] userInputList = userInput.split(" ");
+            String command = userInputList[0];
+            String direction = "";
+            if (userInputList.length > 1) {
+                direction = userInputList[1];
+            }
+
+            switch (command) {
                 //go north
-                case "go north", "north", "n" -> {
-                    if (adventure.goNorth()) {
-                        System.out.println("Going north");
-                        System.out.println(adventure.getCurrentRoom().getName());
-                        System.out.println(adventure.getCurrentRoom().getDescription());
+                case "go" -> {
+                    if (adventure.go(direction)) {
+                        System.out.println("your direction");
+                        System.out.println(adventure.getPlayer().getCurrentRoom().getName());
+                        System.out.println(adventure.getPlayer().getCurrentRoom().getDescription());
                     } else {
                         System.out.println("Can't go that way");
                     }
                 }
+/*
 
                 //go east
-                case "go east", "east", "e" -> {
+                case "go" -> {
                     if (adventure.goEast()) {
                         System.out.println("Going east");
                         System.out.println(adventure.getCurrentRoom().getName());
@@ -59,6 +67,7 @@ public class UserInterface {
                         System.out.println("Can't go that way");
                     }
                 }
+*/
 
                 case "exit" -> {
                     System.out.println("Exiting program...");

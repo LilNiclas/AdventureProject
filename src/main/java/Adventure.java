@@ -1,13 +1,25 @@
 public class Adventure {
 
+    public Map map = new Map();
+    public Player player = new Player();
 
+    public Player getPlayer() {
+        return player;
+    }
 
+    //todo +go(direction: string)
+    public boolean go(String direction) {
+        return player.move(direction);
+    }
+
+    
     public Adventure() {
-        setRooms();
+        player.setCurrentRoom(map.getStartRoom());
     }
 
 
-    //Rooms created
+
+    /*Rooms created
     //1
     Room wilderedHills = new Room("Wildered hills", "You are standing in the middle of a blooming field," +
             " with a strong wind in the back, guiding you towards the massive barren sea");
@@ -75,13 +87,11 @@ public class Adventure {
         //9
         pirateIsland.setNorth(rockyHill);
         pirateIsland.setWest(amazonianIsland);
+    } */
 
+    //private Room currentRoom = wilderedHills;
 
-    }
-
-    private Room currentRoom = wilderedHills;
-
-    public Room getCurrentRoom() {
+    /*public Room getCurrentRoom() {
         return currentRoom;
     }
 
@@ -118,9 +128,7 @@ public class Adventure {
             currentRoom = currentRoom.getWest();
             return true;
         }
-    }
-
-
+    }*/
 
 
 }
