@@ -32,41 +32,6 @@ public class UserInterface {
                         System.out.println("Can't go that way");
                     }
                 }
-/*
-
-                //go east
-                case "go" -> {
-                    if (adventure.goEast()) {
-                        System.out.println("Going east");
-                        System.out.println(adventure.getCurrentRoom().getName());
-                        System.out.println(adventure.getCurrentRoom().getDescription());
-                    } else {
-                        System.out.println("Can't go that way");
-                    }
-                }
-
-                // go south
-                case "go south", "south", "s" -> {
-                    if (adventure.goSouth()) {
-                        System.out.println("Going south");
-                        System.out.println(adventure.getCurrentRoom().getName());
-                        System.out.println(adventure.getCurrentRoom().getDescription());
-                    } else {
-                        System.out.println("Can't go that way");
-                    }
-                }
-
-                //go west
-                case "go west", "west", "w" -> {
-                    if (adventure.goWest()) {
-                        System.out.println("Going west");
-                        System.out.println(adventure.getCurrentRoom().getName());
-                        System.out.println(adventure.getCurrentRoom().getDescription());
-                    } else {
-                        System.out.println("Can't go that way");
-                    }
-                }
-*/
 
                 case "exit" -> {
                     System.out.println("Exiting program...");
@@ -78,7 +43,7 @@ public class UserInterface {
                 }
 
                 case "look", "look around" -> {
-                    System.out.println("In front of me i see"); //todo give beskrivelse af room
+                    System.out.println("In front of me i see");
                     System.out.println(adventure.getPlayer().getCurrentRoom().getName());
                     System.out.println(adventure.getPlayer().getCurrentRoom().getDescription());
                 }
