@@ -49,17 +49,28 @@ public class UserInterface {
 
 
                 case "take" -> {
-                    //First the item is removed from the arraylist connected to the room
+                    // First the item is removed from the arraylist connected to the room
                     // Then the removed item is added to the arraylist connected to the player (inventory)
                     Item pickedUpItem = adventure.getPlayer().getCurrentRoom().removeItem(direction);
                     if (pickedUpItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {
-                        System.out.println("you have removed" + pickedUpItem);
+                        System.out.println("you have picked up " + pickedUpItem);
                         adventure.getPlayer().addItem(pickedUpItem);
-                        System.out.println("You now have " + adventure.getPlayer().getItemList() + "in your inventory");
+                        //test for if it did add it to the inventory
+                        //System.out.println("You now have " + adventure.getPlayer().getItemList() + "in your inventory");
                     }
                 }
+
+                //todo drop metode
+
+
+                //todo add call inventory metode
+                case "inv", "inve", "inven", "inventory" -> {
+                    System.out.println("Your inventory cointains " +  adventure.getPlayer().getItemList() + " . ");
+                }
+
+
 
                 default -> {
                     System.out.println("Invalid input");
