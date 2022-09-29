@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 public class Player {
 // Player Class knows the possion of the player
 // Player Class will also be in control of the player's inventory
     // list of player items
 
     private Room currentRoom;
+
+    private ArrayList<Item> itemList = new ArrayList<>();
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -33,4 +36,13 @@ public class Player {
             return false;
         }
     }
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
 }

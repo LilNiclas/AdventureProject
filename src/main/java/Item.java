@@ -8,7 +8,7 @@ public class Item {
         this.name = name;
     }
 
-    public Item(String description, String name) {
+    public Item(String name, String description ) {
         this.description = description;
         this.name = name;
     }
@@ -30,6 +30,8 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 
     //toString
     @Override

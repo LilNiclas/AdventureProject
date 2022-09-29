@@ -85,8 +85,14 @@ public class Room {
     }
 
 
-    public void removeItem(Item item) {
-        itemList.remove(item);
+    public Item removeItem(String name) {
+        for (Item item : itemList) {
+           if (item.getItemName().equals(name)) {
+               itemList.remove(item);
+               return item;
+           }
+        }
+        return null;
     }
 
     public boolean roomEmpty() {
