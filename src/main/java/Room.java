@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+
 public class Room {
     //The Room Class constructs the attributes for the rooms
+    //list of items in a room
+    private ArrayList<Item> itemList = new ArrayList<>();
 
     private String name;
     private String description;
+
     private Room north;
     private Room east;
     private Room south;
@@ -67,4 +72,25 @@ public class Room {
     public void setWest(Room west) {
         this.west = west;
     }
+
+
+
+    //List of items
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
+
+    public void removeItem(Item item) {
+        itemList.remove(item);
+    }
+
+    public boolean roomEmpty() {
+        return itemList.isEmpty();
+    }
+
 }

@@ -9,7 +9,6 @@ public class Adventure {
         return player;
     }
 
-    //todo +go(direction: string)
     public boolean go(String direction) {
         return player.move(direction);
     }

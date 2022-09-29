@@ -1,5 +1,8 @@
+import javax.xml.namespace.QName;
+
 public class Map {
 // Map Class builds the map and gives the starting room to the Adventure class
+
 
     public Map() {
         setRooms();
@@ -44,11 +47,19 @@ public class Map {
             "you go to the local bar to get some information on the legendary island mentioned in your fathers last will");
 
 
+    // Items
+    private Item sword = new Item("Sword", "A massive 6 foot sword, perfect for slaying your foes");
+    private Item water = new Item("Bucket of water", "A bucket of freshly melted water");
+    private Item lamp = new Item("Lamp", "Rusty oil lamp");
+
+
+
     public void setRooms() {
         //designate rooms direction
         //1
         wilderedHills.setEast(desertIsland);
         wilderedHills.setSouth(overgrownIsland);
+        wilderedHills.addItem(sword);
         //2
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);
@@ -66,6 +77,8 @@ public class Map {
         //7
         iceIsland.setNorth(overgrownIsland);
         iceIsland.setEast(amazonianIsland);
+        iceIsland.addItem(water);
+        iceIsland.addItem(lamp);
         //8
         amazonianIsland.setNorth(bossfightVulkano);
         amazonianIsland.setEast(pirateIsland);
