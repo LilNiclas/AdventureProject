@@ -41,6 +41,16 @@ public class Player {
         itemList.add(item);
     }
 
+    public Item removeItem(String name) {
+        for (Item item : itemList) {
+            if (item.getItemName().equals(name)) {
+                itemList.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Item> getItemList() {
         return itemList;
     }

@@ -63,9 +63,17 @@ public class UserInterface {
                 }
 
                 //todo drop metode
+                case "drop" -> {
+                    Item droppedItem = adventure.getPlayer().removeItem(direction);
+                    if (droppedItem == null) {
+                        System.out.println("There is nothing called that..");
+                    } else {
+                        System.out.println("you have dropped up " + droppedItem);
+                        adventure.getPlayer().getCurrentRoom().addItem(droppedItem);
+                    }
+                }
 
 
-                //todo add call inventory metode
                 case "inv", "inve", "inven", "inventory" -> {
                     System.out.println("Your inventory cointains " +  adventure.getPlayer().getItemList() + " . ");
                 }
