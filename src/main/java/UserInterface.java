@@ -62,7 +62,7 @@ public class UserInterface {
                     }
                 }
 
-                //todo drop metode
+
                 case "drop" -> {
                     Item droppedItem = adventure.getPlayer().removeItem(direction);
                     if (droppedItem == null) {
