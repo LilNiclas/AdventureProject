@@ -6,7 +6,7 @@ public class Player {
 
     private Room currentRoom;
 
-    private ArrayList<Item> itemList = new ArrayList<>();
+    private ArrayList<Item> itemListPlayer = new ArrayList<>();
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -38,21 +38,34 @@ public class Player {
     }
 
     public void addItem(Item item) {
-        itemList.add(item);
+        itemListPlayer.add(item);
     }
 
     public Item removeItem(String name) {
-        for (Item item : itemList) {
+        for (Item item : itemListPlayer) {
             if (item.getItemName().equals(name)) {
-                itemList.remove(item);
+                itemListPlayer.remove(item);
                 return item;
             }
         }
         return null;
     }
 
-    public ArrayList<Item> getItemList() {
-        return itemList;
+    public ArrayList<Item> getItemListPlayer() {
+        return itemListPlayer;
+    }
+
+
+    public Item takeItem(String itemName) {
+        Item pickedUpItem = getCurrentRoom().removeItem(itemName);
+        addItem(pickedUpItem);
+        return pickedUpItem;
+    }
+
+    public Item dropItem(String itemName) {
+        Item droppedItem = removeItem(itemName);
+        currentRoom.addItem(droppedItem);
+        return droppedItem;
     }
 
 }

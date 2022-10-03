@@ -5,6 +5,7 @@ public class Adventure {
     public Map map = new Map();
     public Player player = new Player();
 
+
     public Player getPlayer() {
         return player;
     }
@@ -17,7 +18,17 @@ public class Adventure {
         player.setCurrentRoom(map.getStartRoom());
     }
 
+    public Room getCurrentRoom() {
+        return player.getCurrentRoom();
+    }
 
+    public Item takeItem(String itemName) {
+        return player.takeItem(itemName);
+    }
+
+    public Item dropItem(String itemName) {
+        return player.dropItem(itemName);
+    }
 
 
 }

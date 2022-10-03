@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class Room {
     //The Room Class constructs the attributes for the rooms
     //list of items in a room
-    private ArrayList<Item> itemList = new ArrayList<>();
+    private ArrayList<Item> itemListRoom = new ArrayList<>();
+    Player player = new Player();
 
     private String name;
     private String description;
@@ -77,24 +78,25 @@ public class Room {
 
 
     //List of items
-    public ArrayList<Item> getItemList() {
-        return itemList;
+    public ArrayList<Item> getItemListRoom() {
+        return itemListRoom;
     }
 
     public void addItem(Item item) {
-        itemList.add(item);
+        itemListRoom.add(item);
     }
 
 
     public Item removeItem(String name) {
-        for (Item item : itemList) {
+        for (Item item : itemListRoom) {
            if (item.getItemName().equals(name)) {
-               itemList.remove(item);
+               itemListRoom.remove(item);
                return item;
            }
         }
         return null;
     }
+
 
 
    /* //ikke i brug
