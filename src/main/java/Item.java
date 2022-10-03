@@ -4,9 +4,10 @@ public class Item {
     private String description;
 
 
+    /* //Ikke i brug
     public Item(String name) {
         this.name = name;
-    }
+    }*/
 
     public Item(String name, String description ) {
         this.description = description;
@@ -18,22 +19,21 @@ public class Item {
         return name;
     }
 
-    public String getDescription() {
+
+   /* //Ikke i brug
+   public String getDescription() {
         return description;
     }
-
     //Setter
     public void setItemName(String name) {
         this.name = name;
     }
-
     public void setDescription(String description) {
         this.description = description;
-    }
+    }*/
 
 
 
-    //toString
     @Override
     public String toString() {
         return name + "\n" + description;

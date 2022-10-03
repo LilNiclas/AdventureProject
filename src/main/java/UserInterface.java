@@ -20,7 +20,6 @@ public class UserInterface {
             }
 
             switch (command) {
-                //go north
                 case "go" -> {
                     if (adventure.go(direction)) {
                         System.out.println("your direction");

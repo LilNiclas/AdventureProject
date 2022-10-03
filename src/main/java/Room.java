@@ -13,14 +13,15 @@ public class Room {
     private Room south;
     private Room west;
 
-    public Room(String name, String description, Room north, Room east, Room south, Room west) {
+    //Ikke i brug
+    /*public Room(String name, String description, Room north, Room east, Room south, Room west) {
         this.name = name;
         this.description = description;
         this.north = north;
         this.east = east;
         this.south = south;
         this.west = west;
-    }
+    }*/
 
     public Room(String name, String description){
         this.name = name;
@@ -95,8 +96,10 @@ public class Room {
         return null;
     }
 
+
+   /* //ikke i brug
     public boolean roomEmpty() {
         return itemList.isEmpty();
-    }
+    }*/
 
 }

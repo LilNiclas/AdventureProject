@@ -13,9 +13,11 @@ public class Adventure {
         return player.move(direction);
     }
 
-
     public Adventure() {
         player.setCurrentRoom(map.getStartRoom());
     }
+
+
+
 
 }
