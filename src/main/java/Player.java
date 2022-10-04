@@ -74,7 +74,7 @@ public class Player {
         return droppedItem;
     }
 
-    
+
 
 
     // get til get health
@@ -82,6 +82,14 @@ public class Player {
         return health;
     }
 
+    public Item getItem(String name) {
+        for (Item item : itemListPlayer) {
+            if (item.getItemName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
 
 }

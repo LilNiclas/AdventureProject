@@ -30,5 +30,8 @@ public class Adventure {
         return player.dropItem(itemName);
     }
 
+    /*public Item eatItem(String itemName) {
+        return player.eatItem(itemName) ;
+    }*/
 
 }

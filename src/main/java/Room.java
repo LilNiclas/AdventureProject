@@ -99,7 +99,14 @@ public class Room {
         return null;
     }
 
-
+    public Item getItem(String name) {
+        for (Item item : itemListRoom) {
+            if (item.getItemName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
    /* //ikke i brug
     public boolean roomEmpty() {

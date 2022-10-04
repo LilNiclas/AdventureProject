@@ -63,7 +63,6 @@ public class UserInterface {
                     }
                 }
 
-
                 case "drop" -> {
                     Item droppedItem = adventure.dropItem(commandParameter);
                     if (droppedItem == null) {
@@ -82,6 +81,50 @@ public class UserInterface {
                     System.out.println("HP " + player.getHealth() + "/100 hp");
                 }
 
+                case "eat" -> {
+                    Item ateItemRoom = adventure.getPlayer().getCurrentRoom().getItem(commandParameter);
+                    Item ateItemPlayer = adventure.getPlayer().getItem(commandParameter);
+
+                    if (ateItemRoom != null) {
+                        adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
+                        System.out.println("You have eating " + ateItemRoom);
+                    } else if (ateItemPlayer != null) {
+                        adventure.getPlayer().removeItem(commandParameter);
+                        System.out.println("You have eating " + ateItemPlayer );
+                    } else {
+                        System.out.println("There is nothing called that..");
+                    }
+
+
+
+
+                    //Item ateItemPlayer = adventure.getPlayer().removeItem(commandParameter);
+
+
+                    //hvis item man søger efter ikke er i rummet eller inventory (null)
+                    // print det der ikke noget der hedder
+
+                    //hvordan sletter jeg item?
+                    //eat fra player
+                    //adventure.getPlayer().removeItem(commandParameter);
+
+                    //eat fra room
+                    //adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
+
+                    //else
+                    //hvis det er et rigtig item men ikke en food
+                    //print det kan du ikke spise
+
+                    // else if
+                    //hvis item er food så
+                    //bliver item slettet fra rummet (hvis i rum) eller inventory (hvis i inventor)
+                    //add plus eller minus hp til player'ens hp
+
+
+
+
+
+                }
 
                 //Todo eat
                 //efterfulgt af navnet på en mad,
@@ -89,14 +132,25 @@ public class UserInterface {
                 // Maden holder op med at eksistere, og spilleren får en mængde health fra den.
 
                 /*
-                eat
+                eat 3 outcoms
+                outcome 1:
                 Hvis man skriver eat efterfulgt af en ting som hverken er i rummet eller i inventory,
                 svarer det til at take eller drop et item der ikke findes –
+                if useritme = null
+                    print det der ikke noget der hedder
 
+                    else  userimpuit = item (og ikke food)   type of
+                        print det kan du ikke spise
 
+                        else brugerimput = fooditem
+                        + addheath
+                        + removeitem
+
+                outcome 2:
                 hvis man skriver eat efterfulgt af en ting der ikke er spiseligt,
                 skal programmet udskrive at man ikke kan spise den pågældende ting
 
+                outcome 3:
                 hvis tingen findes, og er spiselig, bliver den spist.
 
                  */
