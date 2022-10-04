@@ -20,6 +20,8 @@ public class Item {
     }
 
 
+
+
    /* //Ikke i brug
    public String getDescription() {
         return description;

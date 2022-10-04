@@ -82,6 +82,10 @@ public class Player {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = this.health+health;
+    }
+
     public Item getItem(String name) {
         for (Item item : itemListPlayer) {
             if (item.getItemName().equals(name)) {

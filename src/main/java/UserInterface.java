@@ -78,7 +78,7 @@ public class UserInterface {
                 }
 
                 case "health", "hp" -> {
-                    System.out.println("HP " + player.getHealth() + "/100 hp");
+                    System.out.println("HP " + player.getHealth() + "");
                 }
 
                 case "eat" -> {
@@ -90,6 +90,11 @@ public class UserInterface {
                         if ( itemInRoom instanceof Food) {
                             adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
                             System.out.println("You have eating " + itemInRoom);
+                            //Todo add hp from fod to player
+                            System.out.println("You now have " + ((Food) itemInRoom).getHealthPoints() + " More Hp");
+                            int addedHp = ((Food) itemInRoom).getHealthPoints();
+                            //give hp til player metode
+                            adventure.getPlayer().setHealth(addedHp);
                         } else {
                             System.out.println(itemInRoom.getItemName() + " not eatable");
                         }
@@ -98,6 +103,9 @@ public class UserInterface {
                         if (itemInPlayer instanceof Food) {
                             adventure.getPlayer().removeItem(commandParameter);
                             System.out.println("You have eating " + itemInPlayer );
+                            System.out.println("You now have " + ((Food) itemInPlayer).getHealthPoints() + " More Hp");
+                            int addedHp = ((Food) itemInPlayer).getHealthPoints();
+                            adventure.getPlayer().setHealth(addedHp);
                             } else {
                             System.out.println(itemInPlayer.getItemName() + " not eatable");
                             }
@@ -108,27 +116,6 @@ public class UserInterface {
 
 
 
-                    //Item itemInPlayer = adventure.getPlayer().removeItem(commandParameter);
-
-
-                    //hvis item man søger efter ikke er i rummet eller inventory (null)
-                    // print det der ikke noget der hedder
-
-                    //hvordan sletter jeg item?
-                    //eat fra player
-                    //adventure.getPlayer().removeItem(commandParameter);
-
-                    //eat fra room
-                    //adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
-
-                    //else
-                    //hvis det er et rigtig item men ikke en food
-                    //print det kan du ikke spise
-
-                    // else if
-                    //hvis item er food så
-                    //bliver item slettet fra rummet (hvis i rum) eller inventory (hvis i inventor)
-                    //add plus eller minus hp til player'ens hp
 
 
 
@@ -136,48 +123,7 @@ public class UserInterface {
 
                 }
 
-                //Todo eat
-                //efterfulgt af navnet på en mad,
-                //tager den nævnte mad enten fra rummet eller fra spillerens inventory og spiser den.
-                // Maden holder op med at eksistere, og spilleren får en mængde health fra den.
 
-                /*
-                eat 3 outcoms
-                outcome 1:
-                Hvis man skriver eat efterfulgt af en ting som hverken er i rummet eller i inventory,
-                svarer det til at take eller drop et item der ikke findes –
-                if useritme = null
-                    print det der ikke noget der hedder
-
-                    else  userimpuit = item (og ikke food)   type of
-                        print det kan du ikke spise
-
-                        else brugerimput = fooditem
-                        + addheath
-                        + removeitem
-
-                outcome 2:
-                hvis man skriver eat efterfulgt af en ting der ikke er spiseligt,
-                skal programmet udskrive at man ikke kan spise den pågældende ting
-
-                outcome 3:
-                hvis tingen findes, og er spiselig, bliver den spist.
-
-                 */
-
-                /*
-                kode
-                todo: lave ny sub klasse der arver fra items der hedder foods
-                todo: opret foods i maps og put dem i rum (ligesom andre items)
-
-                food class
-                todo: healhpoints som er det player optager, når den spiser et food-objekt
-                todo: Lav for eksempel en overloaded constructor der udover name
-                 og description også tager health
-                 – så healthPoints bliver fastlagt når Map opretter de Food-objekter der skal være i spillet.
-
-
-                 */
 
                 default -> {
                     System.out.println("Invalid input");
