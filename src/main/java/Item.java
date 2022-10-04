@@ -1,7 +1,7 @@
 public class Item {
 
-    private String name;
-    private String description;
+    public String name;
+    public String description;
 
 
     /* //Ikke i brug

@@ -52,7 +52,8 @@ public class Map {
     private Item water = new Item("Bucket of water", "A bucket of freshly melted water");
     private Item lamp = new Item("Lamp", "Rusty oil lamp");
 
-
+    // food item
+    private Food cheese = new Food(25, "Cheese", "A big block of cheese");
 
     public void setRooms() {
         //designate rooms direction
@@ -60,6 +61,7 @@ public class Map {
         wilderedHills.setEast(desertIsland);
         wilderedHills.setSouth(overgrownIsland);
         wilderedHills.addItem(sword);
+        wilderedHills.addItem(cheese);
         //2
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);

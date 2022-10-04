@@ -78,10 +78,6 @@ public class UserInterface {
                     System.out.println("Your inventory cointains " +  adventure.getPlayer().getItemListPlayer() + " . ");
                 }
 
-                //Todo health
-                //viser spillerens aktuelle health-status – både som tal og forklarende tekst,
-                // for eksempel: health: 50 – you are in good health, but avoid fighting right now.
-
                 case "health", "hp" -> {
                     System.out.println("HP " + player.getHealth() + "/100 hp");
                 }

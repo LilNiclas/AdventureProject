@@ -87,6 +87,8 @@ public class Room {
     }
 
 
+
+
     public Item removeItem(String name) {
         for (Item item : itemListRoom) {
            if (item.getItemName().equals(name)) {
