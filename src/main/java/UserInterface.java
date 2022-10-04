@@ -78,6 +78,47 @@ public class UserInterface {
                     System.out.println("Your inventory cointains " +  adventure.getPlayer().getItemListPlayer() + " . ");
                 }
 
+                //Todo health
+                //viser spillerens aktuelle health-status – både som tal og forklarende tekst,
+                // for eksempel: health: 50 – you are in good health, but avoid fighting right now.
+
+                case "health", "hp" -> {
+                    System.out.println("HP " + player.getHealth() + "/100 hp");
+                }
+
+
+                //Todo eat
+                //efterfulgt af navnet på en mad,
+                //tager den nævnte mad enten fra rummet eller fra spillerens inventory og spiser den.
+                // Maden holder op med at eksistere, og spilleren får en mængde health fra den.
+
+                /*
+                eat
+                Hvis man skriver eat efterfulgt af en ting som hverken er i rummet eller i inventory,
+                svarer det til at take eller drop et item der ikke findes –
+
+
+                hvis man skriver eat efterfulgt af en ting der ikke er spiseligt,
+                skal programmet udskrive at man ikke kan spise den pågældende ting
+
+                hvis tingen findes, og er spiselig, bliver den spist.
+
+                 */
+
+                /*
+                kode
+                todo: lave ny sub klasse der arver fra items der hedder foods
+                todo: opret foods i maps og put dem i rum (ligesom andre items)
+
+                food class
+                todo: healhpoints som er det player optager, når den spiser et food-objekt
+                todo: Lav for eksempel en overloaded constructor der udover name
+                 og description også tager health
+                 – så healthPoints bliver fastlagt når Map opretter de Food-objekter der skal være i spillet.
+
+
+                 */
+
                 default -> {
                     System.out.println("Invalid input");
                 }

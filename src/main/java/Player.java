@@ -5,8 +5,14 @@ public class Player {
     // list of player items
 
     private Room currentRoom;
-
-    private ArrayList<Item> itemListPlayer = new ArrayList<>();
+    private int health;
+    private ArrayList<Item> itemListPlayer;
+    
+    public Player() {
+        itemListPlayer = new ArrayList<>();
+        health = 100;
+    }
+    
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -67,5 +73,15 @@ public class Player {
         currentRoom.addItem(droppedItem);
         return droppedItem;
     }
+
+    
+
+
+    // get til get health
+    public int getHealth() {
+        return health;
+    }
+
+
 
 }
