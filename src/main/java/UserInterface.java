@@ -82,23 +82,33 @@ public class UserInterface {
                 }
 
                 case "eat" -> {
-                    Item ateItemRoom = adventure.getPlayer().getCurrentRoom().getItem(commandParameter);
-                    Item ateItemPlayer = adventure.getPlayer().getItem(commandParameter);
+                    Item itemInRoom = adventure.getPlayer().getCurrentRoom().getItem(commandParameter);
+                    Item itemInPlayer = adventure.getPlayer().getItem(commandParameter);
 
-                    if (ateItemRoom != null) {
-                        adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
-                        System.out.println("You have eating " + ateItemRoom);
-                    } else if (ateItemPlayer != null) {
-                        adventure.getPlayer().removeItem(commandParameter);
-                        System.out.println("You have eating " + ateItemPlayer );
-                    } else {
+                    if (itemInRoom != null) {
+                        // hvis objekt er typen food så slet
+                        if ( itemInRoom instanceof Food) {
+                            adventure.getPlayer().getCurrentRoom().removeItem(commandParameter);
+                            System.out.println("You have eating " + itemInRoom);
+                        } else {
+                            System.out.println(itemInRoom.getItemName() + " not eatable");
+                        }
+
+                    } else if (itemInPlayer != null) {
+                        if (itemInPlayer instanceof Food) {
+                            adventure.getPlayer().removeItem(commandParameter);
+                            System.out.println("You have eating " + itemInPlayer );
+                            } else {
+                            System.out.println(itemInPlayer.getItemName() + " not eatable");
+                            }
+                        } else {
                         System.out.println("There is nothing called that..");
-                    }
+                        }
 
 
 
 
-                    //Item ateItemPlayer = adventure.getPlayer().removeItem(commandParameter);
+                    //Item itemInPlayer = adventure.getPlayer().removeItem(commandParameter);
 
 
                     //hvis item man søger efter ikke er i rummet eller inventory (null)
