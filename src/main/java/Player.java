@@ -43,8 +43,9 @@ public class Player {
         }
     }
 
-    public void addItem(Item item) {
+    public Item addItem(Item item) {
         itemListPlayer.add(item);
+        return item;
     }
 
     public Item removeItem(String name) {
@@ -82,8 +83,9 @@ public class Player {
         return health;
     }
 
-    public void setHealth(int health) {
+    public Player setHealth(int health) {
         this.health = this.health+health;
+        return null;
     }
 
     public Item getItem(String name) {

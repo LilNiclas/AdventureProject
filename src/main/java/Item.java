@@ -19,7 +19,10 @@ public class Item {
         return name;
     }
 
-
+    @Override
+    public String toString() {
+        return name + "\n" + description;
+    }
 
 
    /* //Ikke i brug
@@ -36,10 +39,6 @@ public class Item {
 
 
 
-    @Override
-    public String toString() {
-        return name + "\n" + description;
-    }
 
 
 }

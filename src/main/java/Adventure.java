@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Adventure {
 // The Adventure class is the controler for the whole game
 // But does not control the player
@@ -29,6 +31,26 @@ public class Adventure {
     public Item dropItem(String itemName) {
         return player.dropItem(itemName);
     }
+
+    public Player setHealth(int health) {
+        return player.setHealth(health);
+    }
+
+    public Item removeItem(String itemName) {
+        return player.removeItem(itemName);
+    }
+
+    public Item getItem(String itemName) {
+        return player.getItem(itemName);
+    }
+
+    public ArrayList<Item> getItemListPlayer() {
+        return player.getItemListPlayer();
+    }
+
+    /*public Item addItem(Item itemName) {
+        return player.addItem(itemName);
+    }*/
 
     /*public Item eatItem(String itemName) {
         return player.eatItem(itemName) ;
