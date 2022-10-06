@@ -76,8 +76,6 @@ public class Player {
     }
 
 
-
-
     // get til get health
     public int getHealth() {
         return health;
@@ -96,6 +94,8 @@ public class Player {
         }
         return null;
     }
+
+
 
 
 }

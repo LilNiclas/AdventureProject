@@ -21,7 +21,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return name + "\n" + description;
+        return name + description;
     }
 
 
@@ -36,9 +36,4 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }*/
-
-
-
-
-
 }

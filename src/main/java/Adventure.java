@@ -48,12 +48,4 @@ public class Adventure {
         return player.getItemListPlayer();
     }
 
-    /*public Item addItem(Item itemName) {
-        return player.addItem(itemName);
-    }*/
-
-    /*public Item eatItem(String itemName) {
-        return player.eatItem(itemName) ;
-    }*/
-
 }

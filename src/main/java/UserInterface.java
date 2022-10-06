@@ -79,7 +79,7 @@ public class UserInterface {
                         System.out.println("There is nothing called that..");
                     } else {
                         System.out.println("You have dropped " + droppedItem);
-                        adventure.getCurrentRoom().addItem(droppedItem);
+                        room.addItem(droppedItem);
                     }
                 }
 
@@ -93,12 +93,12 @@ public class UserInterface {
 
 
                 case "eat", "Eat" -> {
-                    Item itemInRoom = adventure.getCurrentRoom().getItem(commandParameter);
+                    Item itemInRoom = room.getItem(commandParameter);
                     Item itemInPlayer = adventure.getItem(commandParameter);
 
                     if (itemInRoom != null) {
                         if (itemInRoom instanceof Food) {
-                            adventure.getCurrentRoom().removeItem(commandParameter);
+                            room.removeItem(commandParameter);
                             System.out.println("You're eating " + itemInRoom);
                             System.out.println("+" + ((Food) itemInRoom).getHealthPoints() + " HP");
                             int addedHp = ((Food) itemInRoom).getHealthPoints();

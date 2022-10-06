@@ -47,13 +47,18 @@ public class Map {
             "you go to the local bar to get some information on the legendary island mentioned in your fathers last will");
 
 
-    // Items
-    private Item sword = new Item("Sword", "A massive 6 foot sword, perfect for slaying your foes");
-    private Item water = new Item("Bucket of water", "A bucket of freshly melted water");
-    private Item lamp = new Item("Lamp", "Rusty oil lamp");
+    // Items                "name", "description"
+    private Item lamp = new Item("Lamp", ". Rusty oil lamp");
 
-    // food item
-    private Food cheese = new Food(25, "Cheese", "A big block of cheese");
+    //MeeleWeapons          "name", "description", damange, range
+    private MeleeWeapon sword = new MeleeWeapon("Sword", ". A heavy black sword made from the finest steel", 40, 1);
+
+    //RangedWeapons         "name", "description", damange, range, used,
+    private RangedWeapon gun = new RangedWeapon("Gun", ". A rusty old gun", 20, 5, 8);
+
+    // food item        hp, "name", "description"
+    private Food cheese = new Food(25, "Cheese", ". A big block of cheese");
+    private Food water = new Food(-25, "Dirty water", ". A bucket of dirty water");
 
     public void setRooms() {
         //designate rooms direction
@@ -62,6 +67,7 @@ public class Map {
         wilderedHills.setSouth(overgrownIsland);
         wilderedHills.addItem(sword);
         wilderedHills.addItem(cheese);
+        wilderedHills.addItem(gun);
         //2
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);
