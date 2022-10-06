@@ -62,19 +62,19 @@ public class UserInterface {
                 case "take", "Take" -> {
                     // First the item is removed from the arraylist connected to the room
                     // Then the removed item is added to the arraylist connected to the player (inventory)
-                    Item pickedUpItem = adventure.takeItem(commandParameter);
+                    Item pickedUpItem = adventure.getItem(commandParameter);
                     if (pickedUpItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {
                         System.out.println("you have picked up " + pickedUpItem);
-
+                        adventure.takeItem(commandParameter);
                         //test for if it did add it to the inventory
                         //System.out.println("You now have " + adventure.getPlayer().getItemList() + "in your inventory");
                     }
                 }
 
                 case "drop", "Drop" -> {
-                    Item droppedItem = adventure.dropItem(commandParameter);
+                    Item droppedItem = adventure.getItem(commandParameter);
                     if (droppedItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {
@@ -85,6 +85,30 @@ public class UserInterface {
 
                 case "inv", "Inv", "Inventory", "inventory" -> {
                     System.out.println("Your inventory contains " + adventure.getItemListPlayer() + " . ");
+                }
+
+                case "equip", "Equip" -> {
+                    Item itemInPlayer = adventure.getItem(commandParameter);
+
+                    if(itemInPlayer != null) {
+                        if(!(itemInPlayer instanceof Weapon)) {
+                            System.out.println("that is not a weapon");
+                        } else if (itemInPlayer instanceof Weapon) {
+                            System.out.println("you have equiped " + itemInPlayer);
+                            //remove fra player inventory
+                            adventure.removeItem(commandParameter);
+                            //add til equiped arraylist
+                            adventure.addEquipWeapon(commandParameter);
+
+
+                            //todo plus metode til ad deEquip sidste våben
+                            //fjern fra equipweapon og add til inventory igen
+                        }
+
+                    } else {
+                        System.out.println("That is not a weapon you have");
+                    }
+
                 }
 
 
@@ -118,7 +142,7 @@ public class UserInterface {
                 print you have attaced
 
                 hvis du ikke har et våben equpied
-                print you dont have a våben equpied
+                print
 
                  */
 

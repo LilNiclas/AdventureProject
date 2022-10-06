@@ -10,9 +10,11 @@ public class Player {
     private Room currentRoom;
     private int health;
     private ArrayList<Item> itemListPlayer;
+    private ArrayList<Item> equipWeapon;
     
     public Player() {
         itemListPlayer = new ArrayList<>();
+        equipWeapon = new ArrayList<>();
         health = 100;
     }
     
