@@ -4,6 +4,9 @@ public class Player {
 // Player Class will also be in control of the player's inventory
     // list of player items
 
+    // todo inventory skal havde at vide hvilket våben man har equpied
+
+
     private Room currentRoom;
     private int health;
     private ArrayList<Item> itemListPlayer;
