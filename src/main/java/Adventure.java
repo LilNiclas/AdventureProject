@@ -44,8 +44,19 @@ public class Adventure {
         return player.getItem(itemName);
     }
 
+    public Item getEquippedItem(String itemName) {
+        return player.getEquippedItem(itemName);
+    }
+
     public ArrayList<Item> getItemListPlayer() {
         return player.getItemListPlayer();
     }
+
+    public Item addEquipWeapon(String itemName) {
+        return player.getEquippedItem(itemName);
+    }
+
+
+
 
 }

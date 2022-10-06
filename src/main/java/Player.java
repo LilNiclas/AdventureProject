@@ -98,6 +98,20 @@ public class Player {
         return null;
     }
 
+    public Item getEquippedItem(String name) {
+        for (Item item : equipWeapon) {
+            if (item.getItemName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Item addEquipWeapon(Item item) {
+        equipWeapon.add(item);
+        return item;
+    }
+
 
 
 

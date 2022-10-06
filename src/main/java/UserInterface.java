@@ -87,7 +87,9 @@ public class UserInterface {
                     System.out.println("Your inventory contains " + adventure.getItemListPlayer() + " . ");
                 }
 
-                //Todo equip metode
+
+
+
 
                 /*
                 hvis equip (input item) ikke er et våben man har
@@ -119,7 +121,6 @@ public class UserInterface {
                 print you dont have a våben equpied
 
                  */
-
 
 
                 case "health", "Health", "HP", "hp", "Hp" -> {
@@ -156,10 +157,8 @@ public class UserInterface {
                     } else {
                         System.out.println("There is nothing called that..");
                     }
-                    
-                    
-                    
-                    
+
+
                 }
                 default -> {
                     System.out.println("Invalid input");
