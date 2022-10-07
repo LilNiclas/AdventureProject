@@ -36,25 +36,26 @@ public class Adventure {
         return player.setHealth(health);
     }
 
-    public Item removeItem(String itemName) {
+    public Item removeItemInventory(String itemName) {
         return player.removeItem(itemName);
-    }
-
-    public Item getItem(String itemName) {
-        return player.getItem(itemName);
-    }
-
-    public Item getEquippedItem(String itemName) {
-        return player.getEquippedItem(itemName);
     }
 
     public ArrayList<Item> getItemListPlayer() {
         return player.getItemListPlayer();
     }
 
-    public Item addEquipWeapon(String itemName) {
-        return player.getEquippedItem(itemName);
+    public ArrayList<Weapon> getCurrentWeapon() {
+        return player.getCurrentWeapon();
     }
+
+    /*public Item getItemPlayer(String itemName) {
+        return player.getItemPlayer(itemName);
+    }*/
+
+    public Item addEquippedWeapon(String itemName) {
+        return player.takeEquippedItem(itemName);
+    }
+
 
 
 

@@ -60,6 +60,7 @@ public class Map {
     private Food cheese = new Food(25, "Cheese", ". A big block of cheese");
     private Food water = new Food(-25, "Dirty water", ". A bucket of dirty water");
 
+
     public void setRooms() {
         //designate rooms direction
         //1

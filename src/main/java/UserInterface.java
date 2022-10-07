@@ -9,9 +9,7 @@ public class UserInterface {
         boolean isRunning = true;
         System.out.println("Welcome to Adventure");
 
-
         while (isRunning) {
-
             String userInput = scan.nextLine();
             String[] userInputList = userInput.split(" ");
             String command = userInputList[0];
@@ -58,7 +56,6 @@ public class UserInterface {
                     System.out.println(room.getItemListRoom());
                 }
 
-
                 case "take", "Take" -> {
                     // First the item is removed from the arraylist connected to the room
                     // Then the removed item is added to the arraylist connected to the player (inventory)
@@ -84,36 +81,37 @@ public class UserInterface {
                 }
 
                 case "inv", "Inv", "Inventory", "inventory" -> {
-                    System.out.println("Your inventory contains " + adventure.getItemListPlayer() + " . ");
+                    System.out.println("Inventory: " + adventure.getItemListPlayer());
+                    System.out.println("Equipped: " + adventure.getCurrentWeapon());
                 }
 
                 case "equip", "Equip" -> {
                     Item itemInPlayer = adventure.getItem(commandParameter);
 
-                    if(itemInPlayer != null) {
-                        if(!(itemInPlayer instanceof Weapon)) {
-                            System.out.println("that is not a weapon");
+                    if (itemInPlayer != null) {
+                        if (!(itemInPlayer instanceof Weapon)) {
+                            System.out.println("That is not a weapon, try a different item");
                         } else if (itemInPlayer instanceof Weapon) {
-                            System.out.println("you have equiped " + itemInPlayer);
+                            System.out.println("you have equipped: " + itemInPlayer);
                             //remove fra player inventory
-                            adventure.removeItem(commandParameter);
+                            adventure.removeItemInventory(commandParameter);
+
                             //add til equiped arraylist
-                            adventure.addEquipWeapon(commandParameter);
+                            adventure.addEquippedWeapon(commandParameter); //udskriver null
+                            System.out.println("You have added" + adventure.getPlayer().getEquippedItem(commandParameter));
+                            //adventure.getCurrentWeapon()
+
+                            //Hvordan adder vi til player array
 
 
-                            //todo plus metode til ad deEquip sidste våben
-                            //fjern fra equipweapon og add til inventory igen
                         }
+                        //todo plus metode til ad deEquip sidste våben
+                        //fjern fra equipweapon og add til inventory igen
 
                     } else {
-                        System.out.println("That is not a weapon you have");
+                        System.out.println("This is not a weapon");
                     }
-
                 }
-
-
-
-
 
                 /*
                 hvis equip (input item) ikke er et våben man har
@@ -125,7 +123,6 @@ public class UserInterface {
                 hvis euqip (input item) er et våben man har i sin inventory så bliver det euqiped
 
                 */
-
 
                 //todo attack
 
@@ -146,11 +143,9 @@ public class UserInterface {
 
                  */
 
-
                 case "health", "Health", "HP", "hp", "Hp" -> {
                     System.out.println("HP " + player.getHealth() + "");
                 }
-
 
                 case "eat", "Eat" -> {
                     Item itemInRoom = room.getItem(commandParameter);
@@ -169,7 +164,7 @@ public class UserInterface {
 
                     } else if (itemInPlayer != null) {
                         if (itemInPlayer instanceof Food) {
-                            adventure.removeItem(commandParameter);
+                            adventure.removeItemInventory(commandParameter);
                             System.out.println("You're eating " + itemInPlayer);
                             System.out.println("You now have " + ((Food) itemInPlayer).getHealthPoints() + " more Hp");
                             int addedHp = ((Food) itemInPlayer).getHealthPoints();
@@ -184,6 +179,7 @@ public class UserInterface {
 
 
                 }
+
                 default -> {
                     System.out.println("Invalid input");
                 }

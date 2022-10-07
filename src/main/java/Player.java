@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class Player {
 // Player Class knows the possion of the player
 // Player Class will also be in control of the player's inventory
@@ -10,15 +11,24 @@ public class Player {
     private Room currentRoom;
     private int health;
     private ArrayList<Item> itemListPlayer;
-    private ArrayList<Item> equipWeapon;
-    
+    private ArrayList<Weapon> currentWeapon;
+
     public Player() {
         itemListPlayer = new ArrayList<>();
-        equipWeapon = new ArrayList<>();
+        currentWeapon = new ArrayList<>();
         health = 100;
     }
-    
 
+    public ArrayList<Item> getItemListPlayer() {
+        return itemListPlayer;
+    }
+
+    public ArrayList<Weapon> getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+
+    //Getter
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -63,11 +73,6 @@ public class Player {
         return null;
     }
 
-    public ArrayList<Item> getItemListPlayer() {
-        return itemListPlayer;
-    }
-
-
     public Item takeItem(String itemName) {
         Item pickedUpItem = getCurrentRoom().removeItem(itemName);
         addItem(pickedUpItem);
@@ -80,17 +85,6 @@ public class Player {
         return droppedItem;
     }
 
-
-    // get til get health
-    public int getHealth() {
-        return health;
-    }
-
-    public Player setHealth(int health) {
-        this.health = this.health+health;
-        return null;
-    }
-
     public Item getItem(String name) {
         for (Item item : itemListPlayer) {
             if (item.getItemName().equals(name)) {
@@ -100,21 +94,44 @@ public class Player {
         return null;
     }
 
-    public Item getEquippedItem(String name) {
-        for (Item item : equipWeapon) {
+
+
+
+
+    //Metode til currentWeapon array
+    //add
+    //remove
+    //
+    public Item addEquippedItem(Item item) {
+            currentWeapon.add((Weapon) item);
+            return item;
+    }
+
+    public Item removeToEquipped(String name) {
+        for (Item item : currentWeapon) {
             if (item.getItemName().equals(name)) {
+                currentWeapon.remove(item);
                 return item;
             }
         }
         return null;
     }
 
-    public Item addEquipWeapon(Item item) {
-        equipWeapon.add(item);
-        return item;
+    public Item takeEquippedItem(String itemName) {
+
+        Item itemInPlayer = removeToEquipped(itemName);
+        addEquippedItem(itemInPlayer);
+        return itemInPlayer;
     }
 
-
+    public Item getEquippedItem(String name) {
+        for (Item item : currentWeapon) {
+            if (item.getItemName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
 
 }

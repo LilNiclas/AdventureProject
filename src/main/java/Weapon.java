@@ -10,23 +10,5 @@ public abstract class Weapon extends Item {
         this.range = range;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-    public int getDamage() {
-        return damage;
-    }
-
-    public double getRange() {
-        return range;
-    }
-
-
-
-
 
 }
