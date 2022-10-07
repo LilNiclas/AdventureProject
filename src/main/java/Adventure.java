@@ -7,11 +7,23 @@ public class Adventure {
     public Map map = new Map();
     public Player player = new Player();
 
-
+//Getter
+//Get player
+//Get currentroom
+//Get Item
     public Player getPlayer() {
         return player;
     }
 
+    public Room getCurrentRoom() {
+            return player.getCurrentRoom();
+    }
+
+    public Item getItem(String itemName) {
+            return player.getItem(itemName);
+    }
+
+//Metoder
     public boolean go(String direction) {
         return player.move(direction);
     }
@@ -20,9 +32,7 @@ public class Adventure {
         player.setCurrentRoom(map.getStartRoom());
     }
 
-    public Room getCurrentRoom() {
-        return player.getCurrentRoom();
-    }
+
 
     public Item takeItem(String itemName) {
         return player.takeItem(itemName);

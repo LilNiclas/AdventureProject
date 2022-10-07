@@ -33,31 +33,50 @@ public class Player {
         return currentRoom;
     }
 
+    public int getHealth() {
+            return health;
+        }
+
+    //setter
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
 
-    public boolean move(String direction) {
-        Room requestedRoom = null;
-
-        if (direction.charAt(0) == 'n') {
-            requestedRoom = currentRoom.getNorth();
-        } else if (direction.charAt(0) == 'e') {
-            requestedRoom = currentRoom.getEast();
-        } else if (direction.charAt(0) == 's') {
-            requestedRoom = currentRoom.getSouth();
-        } else if (direction.charAt(0) == 'w') {
-            requestedRoom = currentRoom.getWest();
-        }
-
-        if (requestedRoom != null) {
-            currentRoom = requestedRoom;
-            return true;
-        } else {
-            return false;
-        }
+    public Player setHealth(int health) {
+        this.health = this.health + health;
+        return null;
     }
 
+
+    //Metoder til move
+    //Move          (n, e, S, w)
+    public boolean move(String direction) {
+            Room requestedRoom = null;
+
+            if (direction.charAt(0) == 'n') {
+                requestedRoom = currentRoom.getNorth();
+            } else if (direction.charAt(0) == 'e') {
+                requestedRoom = currentRoom.getEast();
+            } else if (direction.charAt(0) == 's') {
+                requestedRoom = currentRoom.getSouth();
+            } else if (direction.charAt(0) == 'w') {
+                requestedRoom = currentRoom.getWest();
+            }
+
+            if (requestedRoom != null) {
+                currentRoom = requestedRoom;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    //Metoder til player array
+    //AddItem       (add Item til playerinventory Array)
+    //RemoveItem    (remove item fra fra playerInventory Array)
+    //TakeItem      (takeItem getter fra room array og sletter item der og adder til playerinventory)
+    //dropItem      (sletter fra player array og adder til room array)
+    //getItem       (getter item fra player array)
     public Item addItem(Item item) {
         itemListPlayer.add(item);
         return item;

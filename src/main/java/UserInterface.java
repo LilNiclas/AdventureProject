@@ -59,7 +59,7 @@ public class UserInterface {
                 case "take", "Take" -> {
                     // First the item is removed from the arraylist connected to the room
                     // Then the removed item is added to the arraylist connected to the player (inventory)
-                    Item pickedUpItem = adventure.getItem(commandParameter);
+                    Item pickedUpItem = room.getItem(commandParameter);
                     if (pickedUpItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {

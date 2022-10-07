@@ -72,10 +72,13 @@ public class Room {
         return itemListRoom;
     }
 
+    //Metoder
+    //AddItem       (til room arraylist)
+    //RemoveItem    (Fra room arrayList)
+    //GetItem       (henter item fra bruger input i room arraylist)
     public void addItem(Item item) {
         itemListRoom.add(item);
     }
-
 
     public Item removeItem(String name) {
         for (Item item : itemListRoom) {
