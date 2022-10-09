@@ -1,3 +1,5 @@
+import ENUM.EatFood;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -34,8 +36,8 @@ public class Player {
     }
 
     public int getHealth() {
-            return health;
-        }
+        return health;
+    }
 
     //setter
     public void setCurrentRoom(Room currentRoom) {
@@ -51,25 +53,25 @@ public class Player {
     //Metoder til move
     //Move          (n, e, S, w)
     public boolean move(String direction) {
-            Room requestedRoom = null;
+        Room requestedRoom = null;
 
-            if (direction.charAt(0) == 'n') {
-                requestedRoom = currentRoom.getNorth();
-            } else if (direction.charAt(0) == 'e') {
-                requestedRoom = currentRoom.getEast();
-            } else if (direction.charAt(0) == 's') {
-                requestedRoom = currentRoom.getSouth();
-            } else if (direction.charAt(0) == 'w') {
-                requestedRoom = currentRoom.getWest();
-            }
-
-            if (requestedRoom != null) {
-                currentRoom = requestedRoom;
-                return true;
-            } else {
-                return false;
-            }
+        if (direction.charAt(0) == 'n') {
+            requestedRoom = currentRoom.getNorth();
+        } else if (direction.charAt(0) == 'e') {
+            requestedRoom = currentRoom.getEast();
+        } else if (direction.charAt(0) == 's') {
+            requestedRoom = currentRoom.getSouth();
+        } else if (direction.charAt(0) == 'w') {
+            requestedRoom = currentRoom.getWest();
         }
+
+        if (requestedRoom != null) {
+            currentRoom = requestedRoom;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     //Metoder til player array
     //AddItem       (add Item til playerinventory Array)
@@ -104,16 +106,31 @@ public class Player {
         return droppedItem;
     }
 
-    public Item getItem(String name) {
+    public Item searchItemInv(String itemName) {
         for (Item item : itemListPlayer) {
-            if (item.getItemName().equals(name)) {
+            if (item.getItemName().equals(itemName)) {
                 return item;
             }
         }
         return null;
     }
 
+    public EatFood eatFood(String itemName) {
+        Item itemInPlayer = searchItemInv(itemName);
+        if (itemInPlayer != null) {
+            if (itemInPlayer instanceof Food) {
+                int addedHp = ((Food) itemInPlayer).getHealthPoints();
+                setHealth(addedHp);
+                removeItem(itemName);
+                return EatFood.EAT_FOOD;
 
+            } else {
+                return EatFood.NOT_FOOD;
+            }
+        } else {
+            return EatFood.NOT_FOUND;
+        }
+    }
 
 
 
@@ -122,8 +139,8 @@ public class Player {
     //remove
     //
     public Item addEquippedItem(Item item) {
-            currentWeapon.add((Weapon) item);
-            return item;
+        currentWeapon.add((Weapon) item);
+        return item;
     }
 
     public Item removeToEquipped(String name) {

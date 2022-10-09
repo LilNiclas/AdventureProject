@@ -1,16 +1,15 @@
+import ENUM.EatFood;
+
 import java.util.ArrayList;
 
 public class Adventure {
-// The Adventure class is the controler for the whole game
-// But does not control the player
 
     public Map map = new Map();
     public Player player = new Player();
 
+
+
 //Getter
-//Get player
-//Get currentroom
-//Get Item
     public Player getPlayer() {
         return player;
     }
@@ -19,8 +18,8 @@ public class Adventure {
             return player.getCurrentRoom();
     }
 
-    public Item getItem(String itemName) {
-            return player.getItem(itemName);
+    public Item searchItemInv(String itemName) {
+            return player.searchItemInv(itemName);
     }
 
 //Metoder
@@ -42,9 +41,9 @@ public class Adventure {
         return player.dropItem(itemName);
     }
 
-    public Player setHealth(int health) {
-        return player.setHealth(health);
-    }
+    /*public Player getHealth(int health) {
+        return player.getHealth(health);
+    }*/
 
     public Item removeItemInventory(String itemName) {
         return player.removeItem(itemName);
@@ -58,9 +57,12 @@ public class Adventure {
         return player.getCurrentWeapon();
     }
 
-    /*public Item getItemPlayer(String itemName) {
-        return player.getItemPlayer(itemName);
-    }*/
+
+    public EatFood eatFood(String itemName) {
+        return player.eatFood(itemName);
+    }
+
+
 
     public Item addEquippedWeapon(String itemName) {
         return player.takeEquippedItem(itemName);

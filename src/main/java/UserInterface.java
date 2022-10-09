@@ -1,5 +1,6 @@
+import ENUM.EatFood;
+
 import java.util.Scanner;
-// Userinterface Class is the Class that takes the input from the user
 
 public class UserInterface {
     private Adventure adventure = new Adventure();
@@ -32,7 +33,7 @@ public class UserInterface {
                     }
                 }
 
-                case "exit", "Exit", "Shut down" -> {
+                case "exit", "Exit", "Shut down", "Close game" -> {
                     System.out.println("Exiting program...");
                     isRunning = false;
                 }
@@ -42,41 +43,37 @@ public class UserInterface {
                     System.out.println("'Look' Player will give a description of the area surrounding the player");
                     System.out.println("'Go + direction(north, east, south, west)' Player will move the player in the given direction");
                     System.out.println("'Inv' or 'Inventory' Player will show the players inventory");
+                    System.out.println("'Health' Player will show the players health");
                     System.out.println("'Take + item' Player will pick up items. The item will be located in the players inventory");
                     System.out.println("'Drop + item' Player will drop the item. The item will be located in the room");
-                    System.out.println("'Health' Player will show the players health");
                     System.out.println("'Eat + item' Player will eat the item if possible");
+                    System.out.println("'Equip + item' Player will equip a weapon");
                     System.out.println("'Exit' The game will shut down");
                 }
 
-                case "look", "look around", "Look" -> {
+                case "look", "look around", "Look", "Room", "room" -> {
                     System.out.println("Oh a new island");
                     System.out.println(room.getName());
                     System.out.println(room.getDescription());
                     System.out.println(room.getItemListRoom());
                 }
 
-                case "take", "Take" -> {
-                    // First the item is removed from the arraylist connected to the room
-                    // Then the removed item is added to the arraylist connected to the player (inventory)
+                case "take", "Take", "pick up", "Pick up" -> {
                     Item pickedUpItem = room.getItem(commandParameter);
                     if (pickedUpItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {
                         System.out.println("you have picked up " + pickedUpItem);
                         adventure.takeItem(commandParameter);
-                        //test for if it did add it to the inventory
-                        //System.out.println("You now have " + adventure.getPlayer().getItemList() + "in your inventory");
                     }
                 }
 
                 case "drop", "Drop" -> {
-                    Item droppedItem = adventure.getItem(commandParameter);
+                    Item droppedItem = adventure.dropItem(commandParameter);
                     if (droppedItem == null) {
                         System.out.println("There is nothing called that..");
                     } else {
                         System.out.println("You have dropped " + droppedItem);
-                        room.addItem(droppedItem);
                     }
                 }
 
@@ -85,8 +82,26 @@ public class UserInterface {
                     System.out.println("Equipped: " + adventure.getCurrentWeapon());
                 }
 
-                case "equip", "Equip" -> {
-                    Item itemInPlayer = adventure.getItem(commandParameter);
+                case "health", "Health", "HP", "hp", "Hp" -> {
+                    System.out.println(player.getHealth() + " HP");
+                }
+
+                case "eat", "Eat", "consume", "Consume" -> {
+                    Item itemInPlayer = adventure.searchItemInv(commandParameter);
+                    EatFood eatFood = adventure.eatFood(commandParameter);
+
+                    if (eatFood == EatFood.EAT_FOOD) {
+                        System.out.println("Consuming: " + itemInPlayer);
+                        System.out.println("+" + ((Food) itemInPlayer).getHealthPoints() + " HP");
+                    } else if (eatFood == EatFood.NOT_FOOD){
+                        System.out.println(itemInPlayer.getItemName() + ". Isn't edible");
+                    } else if (eatFood == EatFood.NOT_FOUND) {
+                        System.out.println("Item not found");
+                    }
+                }
+
+                case "equip", "Equip", "wield", "Wield" -> {
+                    Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
                     if (itemInPlayer != null) {
                         if (!(itemInPlayer instanceof Weapon)) {
@@ -113,77 +128,10 @@ public class UserInterface {
                     }
                 }
 
-                /*
-                hvis equip (input item) ikke er et våben man har
-                print that is not a weapon you have
-
-                else if (input item) er noget andet end et våben
-                print that is not a weapon
-
-                hvis euqip (input item) er et våben man har i sin inventory så bliver det euqiped
-
-                */
-
-                //todo attack
-
-                /*
-                hvis man har et meeleweapon
-                kan man bare angribe
-
-                hvis man har et rangedweapon
-
-                hvis man prøver at attack med et tomt våben
-                print you dont have any ammo
-
-                hvis man prøver at attack og har ammo
-                print you have attaced
-
-                hvis du ikke har et våben equpied
-                print
-
-                 */
-
-                case "health", "Health", "HP", "hp", "Hp" -> {
-                    System.out.println("HP " + player.getHealth() + "");
-                }
-
-                case "eat", "Eat" -> {
-                    Item itemInRoom = room.getItem(commandParameter);
-                    Item itemInPlayer = adventure.getItem(commandParameter);
-
-                    if (itemInRoom != null) {
-                        if (itemInRoom instanceof Food) {
-                            room.removeItem(commandParameter);
-                            System.out.println("You're eating " + itemInRoom);
-                            System.out.println("+" + ((Food) itemInRoom).getHealthPoints() + " HP");
-                            int addedHp = ((Food) itemInRoom).getHealthPoints();
-                            adventure.setHealth(addedHp);
-                        } else {
-                            System.out.println(itemInRoom.getItemName() + " not eatable");
-                        }
-
-                    } else if (itemInPlayer != null) {
-                        if (itemInPlayer instanceof Food) {
-                            adventure.removeItemInventory(commandParameter);
-                            System.out.println("You're eating " + itemInPlayer);
-                            System.out.println("You now have " + ((Food) itemInPlayer).getHealthPoints() + " more Hp");
-                            int addedHp = ((Food) itemInPlayer).getHealthPoints();
-                            adventure.setHealth(addedHp);
-                        } else {
-                            System.out.println(itemInPlayer.getItemName() + " is not eatable");
-                        }
-
-                    } else {
-                        System.out.println("There is nothing called that..");
-                    }
-
-
-                }
-
-                default -> {
-                    System.out.println("Invalid input");
-                }
+            default -> {
+                System.out.println("Invalid input");
             }
         }
     }
+}
 }
