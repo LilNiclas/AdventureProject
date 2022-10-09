@@ -1,4 +1,5 @@
 import ENUM.EatFood;
+import ENUM.EquipItem;
 
 import java.util.ArrayList;
 
@@ -8,8 +9,6 @@ public class Adventure {
     public Player player = new Player();
 
 
-
-//Getter
     public Player getPlayer() {
         return player;
     }
@@ -22,7 +21,6 @@ public class Adventure {
             return player.searchItemInv(itemName);
     }
 
-//Metoder
     public boolean go(String direction) {
         return player.move(direction);
     }
@@ -30,7 +28,6 @@ public class Adventure {
     public Adventure() {
         player.setCurrentRoom(map.getStartRoom());
     }
-
 
 
     public Item takeItem(String itemName) {
@@ -41,20 +38,16 @@ public class Adventure {
         return player.dropItem(itemName);
     }
 
-    /*public Player getHealth(int health) {
-        return player.getHealth(health);
-    }*/
-
-    public Item removeItemInventory(String itemName) {
-        return player.removeItem(itemName);
-    }
-
     public ArrayList<Item> getItemListPlayer() {
         return player.getItemListPlayer();
     }
 
-    public ArrayList<Weapon> getCurrentWeapon() {
-        return player.getCurrentWeapon();
+
+
+
+
+    public EquipItem equipItem(String itemName) {
+        return player.equipItem(itemName);
     }
 
 
@@ -64,9 +57,23 @@ public class Adventure {
 
 
 
+
+
+    public ArrayList<Weapon> getCurrentWeapon() {
+        return player.getCurrentWeapon();
+    }
+
+
+
+
+
+    /*public Item removeItemInventory(String itemName) {
+        return player.removeItem(itemName);
+    }
+
     public Item addEquippedWeapon(String itemName) {
         return player.takeEquippedItem(itemName);
-    }
+    }*/
 
 
 

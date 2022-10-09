@@ -66,7 +66,6 @@ public class Room {
     }
 
 
-
     //List of items
     public ArrayList<Item> getItemListRoom() {
         return itemListRoom;

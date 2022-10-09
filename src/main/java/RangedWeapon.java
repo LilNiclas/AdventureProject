@@ -6,11 +6,11 @@ public class RangedWeapon extends Weapon{
         this.uses = uses;
     }
 
-    public int useWeapon() {
+    /*public int useWeapon() {
         int x = uses;
         x--;
         return x;
-    }
+    }*/
 
 
 

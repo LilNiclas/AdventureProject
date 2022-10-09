@@ -1,7 +1,7 @@
 package ENUM;
 
 public enum EquipItem {
-    EQUIP_WEAPON,
+    EQUIPPING_WEAPON,
     NOT_WEAPON,
     NOT_FOUND,
 }

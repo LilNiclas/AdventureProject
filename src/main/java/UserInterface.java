@@ -1,4 +1,5 @@
 import ENUM.EatFood;
+import ENUM.EquipItem;
 
 import java.util.Scanner;
 
@@ -100,8 +101,28 @@ public class UserInterface {
                     }
                 }
 
+
+
+
+
                 case "equip", "Equip", "wield", "Wield" -> {
+                    EquipItem equipItem = adventure.equipItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
+
+
+                    if (equipItem == EquipItem.EQUIPPING_WEAPON) {
+                        System.out.println(" equipped");
+                    } else if (equipItem == EquipItem.NOT_WEAPON) {
+                        System.out.println(itemInPlayer + " can not be equipped");
+                    } else if (equipItem == EquipItem.NOT_FOUND) {
+                        System.out.println("No item was found");
+                    }
+                }
+
+
+
+
+                    /*Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
                     if (itemInPlayer != null) {
                         if (!(itemInPlayer instanceof Weapon)) {
@@ -116,7 +137,7 @@ public class UserInterface {
                             System.out.println("You have added" + adventure.getPlayer().getEquippedItem(commandParameter));
                             //adventure.getCurrentWeapon()
 
-                            //Hvordan adder vi til player array
+
 
 
                         }
@@ -125,8 +146,10 @@ public class UserInterface {
 
                     } else {
                         System.out.println("This is not a weapon");
-                    }
-                }
+                    }*/
+
+
+
 
             default -> {
                 System.out.println("Invalid input");

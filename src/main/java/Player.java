@@ -1,4 +1,5 @@
 import ENUM.EatFood;
+import ENUM.EquipItem;
 
 import java.util.ArrayList;
 
@@ -6,8 +7,6 @@ public class Player {
 // Player Class knows the possion of the player
 // Player Class will also be in control of the player's inventory
     // list of player items
-
-    // todo inventory skal havde at vide hvilket våben man har equpied
 
 
     private Room currentRoom;
@@ -49,7 +48,6 @@ public class Player {
         return null;
     }
 
-
     //Metoder til move
     //Move          (n, e, S, w)
     public boolean move(String direction) {
@@ -72,6 +70,7 @@ public class Player {
             return false;
         }
     }
+
 
     //Metoder til player array
     //AddItem       (add Item til playerinventory Array)
@@ -115,6 +114,7 @@ public class Player {
         return null;
     }
 
+
     public EatFood eatFood(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         if (itemInPlayer != null) {
@@ -133,8 +133,23 @@ public class Player {
     }
 
 
+    public EquipItem equipItem(String itemName) {
+        Item itemInPlayer = searchItemInv(itemName);
+        if (itemInPlayer != null) {
+            if (itemInPlayer instanceof Weapon) {
+                removeItem(itemName);
+                currentWeapon.add((Weapon) itemInPlayer);
+                return EquipItem.EQUIPPING_WEAPON;
+            } else {
+                return EquipItem.NOT_WEAPON;
+            }
+        } else {
+            return EquipItem.NOT_FOUND;
+        }
+    }
 
-    //Metode til currentWeapon array
+
+/*    //Metode til currentWeapon array
     //add
     //remove
     //
@@ -167,7 +182,7 @@ public class Player {
             }
         }
         return null;
-    }
+    }*/
 
 
 }
