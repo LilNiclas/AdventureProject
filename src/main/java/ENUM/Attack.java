@@ -5,5 +5,5 @@ public enum Attack {
     ATTACK_RANGE,
     MISS,
     NO_AMMO,
-    NOT_FOUND,
+    NOT_EQUIPPED,
 }

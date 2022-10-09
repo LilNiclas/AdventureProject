@@ -7,11 +7,12 @@ public class RangedWeapon extends Weapon{
     }
 
     public int getAmmunition() {
-        for ()
-
         return ammunition;
     }
 
+    public void ammoUse() {
+        ammunition--;
+    }
 
 
 

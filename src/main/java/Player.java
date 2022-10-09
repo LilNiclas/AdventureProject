@@ -11,7 +11,6 @@ public class Player {
 
     private Room currentRoom;
     private int health;
-    private int damage;
     private ArrayList<Item> itemListPlayer;
     private ArrayList<Weapon> currentWeapon;
 
@@ -19,7 +18,6 @@ public class Player {
         itemListPlayer = new ArrayList<>();
         currentWeapon = new ArrayList<>();
         health = 100;
-        damage = 0;
     }
 
     public ArrayList<Item> getItemListPlayer() {
@@ -40,9 +38,6 @@ public class Player {
         return health;
     }
 
-    public int getDamage() {
-        return damage;
-    }
 
     //setter
     public void setCurrentRoom(Room currentRoom) {
@@ -162,8 +157,6 @@ public class Player {
         }
     }
 
-
-
     public Attack attack(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         Item weapon = getEquippedItem(itemName);
@@ -171,22 +164,25 @@ public class Player {
             if (weapon instanceof MeleeWeapon) {
                 ((MeleeWeapon) weapon).getDamage();
                 return Attack.ATTACK_MELEE;
+
                 //if statement siger hvis der misses
             } else if (weapon instanceof RangedWeapon) {
                 ((RangedWeapon) weapon).getDamage();
-                ((RangedWeapon) weapon).getAmmunition();
+
                 //Ammo
+                //for (Weapon weapon : )
+                ((RangedWeapon) weapon).getAmmunition();
+
                 //if statement siger hvis der misses
                 return Attack.ATTACK_RANGE;
             }
         //} else if (weapon != getEquippedItem(itemName)) {
             //return Attack.NOT_FOUND;
-        } else if (itemInPlayer != null) {
-            return Attack.NOT_FOUND;
+        }
+        else if (itemInPlayer != null) {
+            return Attack.NOT_EQUIPPED;
         }
         return null;
     }
-
-
 
 }

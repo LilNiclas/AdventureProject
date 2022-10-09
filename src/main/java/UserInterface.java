@@ -117,7 +117,7 @@ public class UserInterface {
                     }
                 }
 
-                case "Attack", "attack" -> {
+                case "Attack", "attack", "Shoot", "shoot", "swing", "Swing" -> {
                     Attack attack = adventure.attack(commandParameter);
                     Item getEquippedItem = adventure.getEquippedItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
@@ -126,13 +126,13 @@ public class UserInterface {
                         System.out.println("Melee attack hit. " + ((MeleeWeapon) getEquippedItem).getDamage() + " damage dealt");
                     } else if (attack == Attack.ATTACK_RANGE) {
                         System.out.println("Range attack hit. " + ((RangedWeapon) getEquippedItem).getDamage() + " damage dealt");
+                        System.out.println(((RangedWeapon) getEquippedItem).getAmmunition() + " shots left");
                     } else if (attack == Attack.MISS) {
                         System.out.println("You missed + enemy");
                     } else if (attack == Attack.NO_AMMO) {
                         System.out.println("No ammunition left");
-
-                    } else if (attack == Attack.NOT_FOUND) {
-                        System.out.println("You dont have "  + attack + " equipped");
+                    } else if (attack == Attack.NOT_EQUIPPED) {
+                        System.out.println("You dont have "  + itemInPlayer + " equipped");
                     } else {
                         System.out.println("Invalid input (nothing matched your searched)");
                     }
