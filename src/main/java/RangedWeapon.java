@@ -1,16 +1,17 @@
 public class RangedWeapon extends Weapon{
-    protected int uses;
+    protected int ammunition;
 
-    public RangedWeapon(String name, String description, int damage, double range, int uses) {
+    public RangedWeapon(String name, String description, int damage, double range, int ammunition) {
         super(name, description, damage, range);
-        this.uses = uses;
+        this.ammunition = ammunition;
     }
 
-    /*public int useWeapon() {
-        int x = uses;
-        x--;
-        return x;
-    }*/
+    public int getAmmunition() {
+        for ()
+
+        return ammunition;
+    }
+
 
 
 

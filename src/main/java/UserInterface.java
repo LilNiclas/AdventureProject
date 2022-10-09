@@ -1,3 +1,4 @@
+import ENUM.Attack;
 import ENUM.EatFood;
 import ENUM.EquipItem;
 
@@ -42,13 +43,14 @@ public class UserInterface {
                 case "help", "Help", "Instruction", "Instructions", "instruction", "instructions" -> {
                     System.out.println("Instruction manual");
                     System.out.println("'Look' Player will give a description of the area surrounding the player");
-                    System.out.println("'Go + direction(north, east, south, west)' Player will move the player in the given direction");
+                    System.out.println("'Go + direction'(north, east, south, west) Player will move the in the given direction");
                     System.out.println("'Inv' or 'Inventory' Player will show the players inventory");
                     System.out.println("'Health' Player will show the players health");
                     System.out.println("'Take + item' Player will pick up items. The item will be located in the players inventory");
                     System.out.println("'Drop + item' Player will drop the item. The item will be located in the room");
                     System.out.println("'Eat + item' Player will eat the item if possible");
                     System.out.println("'Equip + item' Player will equip a weapon");
+                    System.out.println("'Attack + enemy' Player will attack an enemy");
                     System.out.println("'Exit' The game will shut down");
                 }
 
@@ -97,21 +99,17 @@ public class UserInterface {
                     } else if (eatFood == EatFood.NOT_FOOD){
                         System.out.println(itemInPlayer.getItemName() + ". Isn't edible");
                     } else if (eatFood == EatFood.NOT_FOUND) {
-                        System.out.println("Item not found");
+                        System.out.println("No item was found");
                     }
                 }
-
-
-
-
 
                 case "equip", "Equip", "wield", "Wield" -> {
                     EquipItem equipItem = adventure.equipItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
-
+                    Item getEquippedItem = adventure.getEquippedItem(commandParameter);
 
                     if (equipItem == EquipItem.EQUIPPING_WEAPON) {
-                        System.out.println(" equipped");
+                        System.out.println(getEquippedItem + " equipped");
                     } else if (equipItem == EquipItem.NOT_WEAPON) {
                         System.out.println(itemInPlayer + " can not be equipped");
                     } else if (equipItem == EquipItem.NOT_FOUND) {
@@ -119,37 +117,26 @@ public class UserInterface {
                     }
                 }
 
+                case "Attack", "attack" -> {
+                    Attack attack = adventure.attack(commandParameter);
+                    Item getEquippedItem = adventure.getEquippedItem(commandParameter);
+                    Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
+                    if (attack == Attack.ATTACK_MELEE) {
+                        System.out.println("Melee attack hit. " + ((MeleeWeapon) getEquippedItem).getDamage() + " damage dealt");
+                    } else if (attack == Attack.ATTACK_RANGE) {
+                        System.out.println("Range attack hit. " + ((RangedWeapon) getEquippedItem).getDamage() + " damage dealt");
+                    } else if (attack == Attack.MISS) {
+                        System.out.println("You missed + enemy");
+                    } else if (attack == Attack.NO_AMMO) {
+                        System.out.println("No ammunition left");
 
-
-                    /*Item itemInPlayer = adventure.searchItemInv(commandParameter);
-
-                    if (itemInPlayer != null) {
-                        if (!(itemInPlayer instanceof Weapon)) {
-                            System.out.println("That is not a weapon, try a different item");
-                        } else if (itemInPlayer instanceof Weapon) {
-                            System.out.println("you have equipped: " + itemInPlayer);
-                            //remove fra player inventory
-                            adventure.removeItemInventory(commandParameter);
-
-                            //add til equiped arraylist
-                            adventure.addEquippedWeapon(commandParameter); //udskriver null
-                            System.out.println("You have added" + adventure.getPlayer().getEquippedItem(commandParameter));
-                            //adventure.getCurrentWeapon()
-
-
-
-
-                        }
-                        //todo plus metode til ad deEquip sidste våben
-                        //fjern fra equipweapon og add til inventory igen
-
+                    } else if (attack == Attack.NOT_FOUND) {
+                        System.out.println("You dont have "  + attack + " equipped");
                     } else {
-                        System.out.println("This is not a weapon");
-                    }*/
-
-
-
+                        System.out.println("Invalid input (nothing matched your searched)");
+                    }
+                }
 
             default -> {
                 System.out.println("Invalid input");

@@ -4,7 +4,6 @@ public class Room {
     //The Room Class constructs the attributes for the rooms
     //list of items in a room
     private ArrayList<Item> itemListRoom = new ArrayList<>();
-    Player player = new Player();
 
     private String name;
     private String description;

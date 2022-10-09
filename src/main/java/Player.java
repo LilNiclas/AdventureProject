@@ -1,3 +1,4 @@
+import ENUM.Attack;
 import ENUM.EatFood;
 import ENUM.EquipItem;
 
@@ -8,9 +9,9 @@ public class Player {
 // Player Class will also be in control of the player's inventory
     // list of player items
 
-
     private Room currentRoom;
     private int health;
+    private int damage;
     private ArrayList<Item> itemListPlayer;
     private ArrayList<Weapon> currentWeapon;
 
@@ -18,6 +19,7 @@ public class Player {
         itemListPlayer = new ArrayList<>();
         currentWeapon = new ArrayList<>();
         health = 100;
+        damage = 0;
     }
 
     public ArrayList<Item> getItemListPlayer() {
@@ -38,6 +40,10 @@ public class Player {
         return health;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
     //setter
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
@@ -48,36 +54,14 @@ public class Player {
         return null;
     }
 
-    //Metoder til move
-    //Move          (n, e, S, w)
-    public boolean move(String direction) {
-        Room requestedRoom = null;
-
-        if (direction.charAt(0) == 'n') {
-            requestedRoom = currentRoom.getNorth();
-        } else if (direction.charAt(0) == 'e') {
-            requestedRoom = currentRoom.getEast();
-        } else if (direction.charAt(0) == 's') {
-            requestedRoom = currentRoom.getSouth();
-        } else if (direction.charAt(0) == 'w') {
-            requestedRoom = currentRoom.getWest();
-        }
-
-        if (requestedRoom != null) {
-            currentRoom = requestedRoom;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     //Metoder til player array
     //AddItem       (add Item til playerinventory Array)
     //RemoveItem    (remove item fra fra playerInventory Array)
     //TakeItem      (takeItem getter fra room array og sletter item der og adder til playerinventory)
     //dropItem      (sletter fra player array og adder til room array)
     //getItem       (getter item fra player array)
+
+    //Items
     public Item addItem(Item item) {
         itemListPlayer.add(item);
         return item;
@@ -114,6 +98,37 @@ public class Player {
         return null;
     }
 
+    public Item getEquippedItem(String name) {
+        for (Item item : currentWeapon) {
+            if (item.getItemName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+
+    //Actions
+    public boolean move(String direction) {
+        Room requestedRoom = null;
+
+        if (direction.charAt(0) == 'n') {
+            requestedRoom = currentRoom.getNorth();
+        } else if (direction.charAt(0) == 'e') {
+            requestedRoom = currentRoom.getEast();
+        } else if (direction.charAt(0) == 's') {
+            requestedRoom = currentRoom.getSouth();
+        } else if (direction.charAt(0) == 'w') {
+            requestedRoom = currentRoom.getWest();
+        }
+
+        if (requestedRoom != null) {
+            currentRoom = requestedRoom;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public EatFood eatFood(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
@@ -132,7 +147,6 @@ public class Player {
         }
     }
 
-
     public EquipItem equipItem(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         if (itemInPlayer != null) {
@@ -149,40 +163,30 @@ public class Player {
     }
 
 
-/*    //Metode til currentWeapon array
-    //add
-    //remove
-    //
-    public Item addEquippedItem(Item item) {
-        currentWeapon.add((Weapon) item);
-        return item;
-    }
 
-    public Item removeToEquipped(String name) {
-        for (Item item : currentWeapon) {
-            if (item.getItemName().equals(name)) {
-                currentWeapon.remove(item);
-                return item;
+    public Attack attack(String itemName) {
+        Item itemInPlayer = searchItemInv(itemName);
+        Item weapon = getEquippedItem(itemName);
+        if (currentWeapon != null) {
+            if (weapon instanceof MeleeWeapon) {
+                ((MeleeWeapon) weapon).getDamage();
+                return Attack.ATTACK_MELEE;
+                //if statement siger hvis der misses
+            } else if (weapon instanceof RangedWeapon) {
+                ((RangedWeapon) weapon).getDamage();
+                ((RangedWeapon) weapon).getAmmunition();
+                //Ammo
+                //if statement siger hvis der misses
+                return Attack.ATTACK_RANGE;
             }
+        //} else if (weapon != getEquippedItem(itemName)) {
+            //return Attack.NOT_FOUND;
+        } else if (itemInPlayer != null) {
+            return Attack.NOT_FOUND;
         }
         return null;
     }
 
-    public Item takeEquippedItem(String itemName) {
-
-        Item itemInPlayer = removeToEquipped(itemName);
-        addEquippedItem(itemInPlayer);
-        return itemInPlayer;
-    }
-
-    public Item getEquippedItem(String name) {
-        for (Item item : currentWeapon) {
-            if (item.getItemName().equals(name)) {
-                return item;
-            }
-        }
-        return null;
-    }*/
 
 
 }

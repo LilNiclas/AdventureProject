@@ -1,3 +1,4 @@
+import ENUM.Attack;
 import ENUM.EatFood;
 import ENUM.EquipItem;
 
@@ -13,22 +14,25 @@ public class Adventure {
         return player;
     }
 
-    public Room getCurrentRoom() {
-            return player.getCurrentRoom();
-    }
-
-    public Item searchItemInv(String itemName) {
-            return player.searchItemInv(itemName);
-    }
-
-    public boolean go(String direction) {
-        return player.move(direction);
-    }
-
     public Adventure() {
         player.setCurrentRoom(map.getStartRoom());
     }
 
+    public Room getCurrentRoom() {
+            return player.getCurrentRoom();
+    }
+
+
+
+
+    //Items
+    public ArrayList<Weapon> getCurrentWeapon() {
+        return player.getCurrentWeapon();
+    }
+
+    public ArrayList<Item> getItemListPlayer() {
+        return player.getItemListPlayer();
+    }
 
     public Item takeItem(String itemName) {
         return player.takeItem(itemName);
@@ -38,42 +42,42 @@ public class Adventure {
         return player.dropItem(itemName);
     }
 
-    public ArrayList<Item> getItemListPlayer() {
-        return player.getItemListPlayer();
+    public Item searchItemInv(String itemName) {
+        return player.searchItemInv(itemName);
+    }
+
+    public Item getEquippedItem(String itemName) {
+        return player.getEquippedItem(itemName);
     }
 
 
 
 
-
-    public EquipItem equipItem(String itemName) {
-        return player.equipItem(itemName);
+    //Actions
+    public boolean go(String direction) {
+        return player.move(direction);
     }
-
 
     public EatFood eatFood(String itemName) {
         return player.eatFood(itemName);
     }
 
+    public EquipItem equipItem(String itemName) {
+        return player.equipItem(itemName);
+    }
 
-
-
-
-    public ArrayList<Weapon> getCurrentWeapon() {
-        return player.getCurrentWeapon();
+    public Attack attack(String itemName) {
+        return player.attack(itemName);
     }
 
 
 
 
 
-    /*public Item removeItemInventory(String itemName) {
-        return player.removeItem(itemName);
-    }
 
-    public Item addEquippedWeapon(String itemName) {
-        return player.takeEquippedItem(itemName);
-    }*/
+
+
+
 
 
 
