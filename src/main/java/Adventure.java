@@ -23,8 +23,6 @@ public class Adventure {
     }
 
 
-
-
     //Items
     public ArrayList<Weapon> getCurrentWeapon() {
         return player.getCurrentWeapon();
@@ -51,8 +49,6 @@ public class Adventure {
     }
 
 
-
-
     //Actions
     public boolean go(String direction) {
         return player.move(direction);
@@ -69,18 +65,5 @@ public class Adventure {
     public Attack attack(String itemName) {
         return player.attack(itemName);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

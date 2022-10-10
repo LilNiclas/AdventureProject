@@ -1,19 +1,22 @@
 public class Item {
 
-    public String name;
+    public String itemName;
     public String description;
 
-    public Item(String name, String description) {
+    public Item(String itemName, String description) {
         this.description = description;
-        this.name = name;
+        this.itemName = itemName;
+    }
+    public Item(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getItemName() {
-        return name;
+        return itemName;
     }
 
     @Override
     public String toString() {
-        return name + description;
+        return itemName + description;
     }
 }

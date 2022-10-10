@@ -96,7 +96,7 @@ public class UserInterface {
                     if (eatFood == EatFood.EAT_FOOD) {
                         System.out.println("Consuming: " + itemInPlayer);
                         System.out.println("+" + ((Food) itemInPlayer).getHealthPoints() + " HP");
-                    } else if (eatFood == EatFood.NOT_FOOD){
+                    } else if (eatFood == EatFood.NOT_FOOD) {
                         System.out.println(itemInPlayer.getItemName() + ". Isn't edible");
                     } else if (eatFood == EatFood.NOT_FOUND) {
                         System.out.println("No item was found");
@@ -123,25 +123,25 @@ public class UserInterface {
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
                     if (attack == Attack.ATTACK_MELEE) {
-                        System.out.println("Melee attack hit. " + ((MeleeWeapon) getEquippedItem).getDamage() + " damage dealt");
+                        System.out.println("Melee attack. " + ((MeleeWeapon) getEquippedItem).getDamage() + " damage dealt");
                     } else if (attack == Attack.ATTACK_RANGE) {
-                        System.out.println("Range attack hit. " + ((RangedWeapon) getEquippedItem).getDamage() + " damage dealt");
+                        System.out.println("Range attack. " + ((RangedWeapon) getEquippedItem).getDamage() + " damage dealt");
                         System.out.println(((RangedWeapon) getEquippedItem).getAmmunition() + " shots left");
                     } else if (attack == Attack.MISS) {
                         System.out.println("You missed + enemy");
                     } else if (attack == Attack.NO_AMMO) {
                         System.out.println("No ammunition left");
                     } else if (attack == Attack.NOT_EQUIPPED) {
-                        System.out.println("You dont have "  + itemInPlayer + " equipped");
+                        System.out.println("You dont have " + itemInPlayer + " equipped");
                     } else {
                         System.out.println("Invalid input (nothing matched your searched)");
                     }
                 }
 
-            default -> {
-                System.out.println("Invalid input");
+                default -> {
+                    System.out.println("Invalid input");
+                }
             }
         }
     }
-}
 }

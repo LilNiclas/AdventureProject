@@ -1,8 +1,8 @@
 public class RangedWeapon extends Weapon{
     protected int ammunition;
 
-    public RangedWeapon(String name, String description, int damage, double range, int ammunition) {
-        super(name, description, damage, range);
+    public RangedWeapon(String itemName, int damage, int ammunition) {
+        super(itemName, damage);
         this.ammunition = ammunition;
     }
 
@@ -10,10 +10,8 @@ public class RangedWeapon extends Weapon{
         return ammunition;
     }
 
-    public void ammoUse() {
+    @Override
+    public void useAmmo() {
         ammunition--;
     }
-
-
-
 }

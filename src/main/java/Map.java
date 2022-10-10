@@ -51,10 +51,10 @@ public class Map {
     private Item lamp = new Item("Lamp", ". Rusty oil lamp");
 
     //MeeleWeapons
-    private MeleeWeapon sword = new MeleeWeapon("Sword", ". A heavy black sword made from the finest steel", 40, 1);
+    private MeleeWeapon sword = new MeleeWeapon("Sword", 40);
 
     //RangedWeapons
-    private RangedWeapon gun = new RangedWeapon("Gun", ". A rusty old gun", 20, 5, 8);
+    private RangedWeapon gun = new RangedWeapon("Gun", 20, 8);
 
     //food item
     private Food cheese = new Food(25, "Cheese", ". A big block of cheese");

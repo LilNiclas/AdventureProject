@@ -128,12 +128,11 @@ public class Player {
     public EatFood eatFood(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         if (itemInPlayer != null) {
-            if (itemInPlayer instanceof Food) {
-                int addedHp = ((Food) itemInPlayer).getHealthPoints();
+            if (itemInPlayer instanceof Food food) {
+                int addedHp = food.getHealthPoints();
                 setHealth(addedHp);
                 removeItem(itemName);
                 return EatFood.EAT_FOOD;
-
             } else {
                 return EatFood.NOT_FOOD;
             }
@@ -145,9 +144,9 @@ public class Player {
     public EquipItem equipItem(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         if (itemInPlayer != null) {
-            if (itemInPlayer instanceof Weapon) {
+            if (itemInPlayer instanceof Weapon weapon) {
                 removeItem(itemName);
-                currentWeapon.add((Weapon) itemInPlayer);
+                currentWeapon.add(weapon);
                 return EquipItem.EQUIPPING_WEAPON;
             } else {
                 return EquipItem.NOT_WEAPON;
@@ -161,28 +160,23 @@ public class Player {
         Item itemInPlayer = searchItemInv(itemName);
         Item weapon = getEquippedItem(itemName);
         if (currentWeapon != null) {
-            if (weapon instanceof MeleeWeapon) {
-                ((MeleeWeapon) weapon).getDamage();
+            if (weapon instanceof MeleeWeapon meleeWeapon) {
+                (meleeWeapon).getDamage();
                 return Attack.ATTACK_MELEE;
 
-                //if statement siger hvis der misses
-            } else if (weapon instanceof RangedWeapon) {
-                ((RangedWeapon) weapon).getDamage();
+            } else if (weapon instanceof RangedWeapon rangedWeapon) {
+                (rangedWeapon).getDamage();
+                (rangedWeapon).getAmmunition();
 
                 //Ammo
-                //for (Weapon weapon : )
-                ((RangedWeapon) weapon).getAmmunition();
+                for (Weapon weapons : getCurrentWeapon())
 
-                //if statement siger hvis der misses
-                return Attack.ATTACK_RANGE;
+
+                    return Attack.ATTACK_RANGE;
             }
-        //} else if (weapon != getEquippedItem(itemName)) {
-            //return Attack.NOT_FOUND;
-        }
-        else if (itemInPlayer != null) {
+        } else if (itemInPlayer != null) {
             return Attack.NOT_EQUIPPED;
         }
         return null;
     }
-
 }

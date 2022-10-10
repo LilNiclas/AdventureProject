@@ -1,9 +1,10 @@
 public class MeleeWeapon extends Weapon {
 
-    public MeleeWeapon(String name, String description, int damage, double range) {
-        super(name, description, damage, range);
+    public MeleeWeapon(String itemName, int damage) {
+        super(itemName, damage);
     }
 
-
-
+    @Override
+    public void useAmmo() {
+    }
 }
