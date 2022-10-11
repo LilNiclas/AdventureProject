@@ -71,6 +71,7 @@ public class Map {
         wilderedHills.addItem(sword);
         wilderedHills.addItem(cheese);
         wilderedHills.addItem(gun);
+        wilderedHills.addEnemy(pirate);
         //2
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);

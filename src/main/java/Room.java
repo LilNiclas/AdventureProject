@@ -4,6 +4,7 @@ public class Room {
     //The Room Class constructs the attributes for the rooms
     //list of items in a room
     private ArrayList<Item> itemListRoom = new ArrayList<>();
+    private ArrayList<Enemy> enemies = new ArrayList<>();
 
     private String name;
     private String description;
@@ -65,10 +66,14 @@ public class Room {
     }
 
 
-    //List of items
+    //List of items + enemies
     public ArrayList<Item> getItemListRoom() {
         return itemListRoom;
     }
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
 
     //Metoder
     //AddItem       (til room arraylist)
@@ -78,12 +83,26 @@ public class Room {
         itemListRoom.add(item);
     }
 
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
     public Item removeItem(String name) {
         for (Item item : itemListRoom) {
            if (item.getItemName().equals(name)) {
                itemListRoom.remove(item);
                return item;
            }
+        }
+        return null;
+    }
+
+    public Enemy removeEnemy(String name) {
+        for (Enemy enemy : enemies) {
+            if (enemy.getName().equals(name)) {
+                enemies.remove(enemy);
+                return enemy;
+            }
         }
         return null;
     }

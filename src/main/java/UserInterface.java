@@ -27,9 +27,10 @@ public class UserInterface {
             switch (command) {
                 case "go", "Go", "move", "Move" -> {
                     if (adventure.go(commandParameter)) {
-                        System.out.println("your direction");
                         System.out.println(room.getName());
                         System.out.println(room.getDescription());
+                        System.out.println("\n");
+                        System.out.println(room.getItemListRoom());
                     } else {
                         System.out.println("Can't go that way");
                     }
@@ -58,6 +59,7 @@ public class UserInterface {
                     System.out.println("Oh a new island");
                     System.out.println(room.getName());
                     System.out.println(room.getDescription());
+                    System.out.println("\n");
                     System.out.println(room.getItemListRoom());
                 }
 
