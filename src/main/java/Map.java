@@ -54,12 +54,14 @@ public class Map {
     private MeleeWeapon sword = new MeleeWeapon("Sword", 40);
 
     //RangedWeapons
-    private RangedWeapon gun = new RangedWeapon("Gun", 20, 8);
+    private RangedWeapon gun = new RangedWeapon("Gun", 20, 2);
 
     //food item
     private Food cheese = new Food(25, "Cheese", ". A big block of cheese");
     private Food water = new Food(-15, "Dirty water", ". A bucket of dirty water");
 
+    //Enemy
+    private Enemy pirate = new Enemy("Pirate", 60, 15);
 
     public void setRooms() {
         //Rooms attributes

@@ -159,24 +159,22 @@ public class Player {
     public Attack attack(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
         Item weapon = getEquippedItem(itemName);
-        if (currentWeapon != null) {
+        if (weapon != null) {
             if (weapon instanceof MeleeWeapon meleeWeapon) {
                 (meleeWeapon).getDamage();
                 return Attack.ATTACK_MELEE;
-
-            } else if (weapon instanceof RangedWeapon rangedWeapon) {
+            } else if (weapon instanceof RangedWeapon rangedWeapon && rangedWeapon.canUse()) {
                 (rangedWeapon).getDamage();
-                (rangedWeapon).getAmmunition();
-
-                //Ammo
-                for (Weapon weapons : getCurrentWeapon())
-
-
-                    return Attack.ATTACK_RANGE;
+                (rangedWeapon).useAmmo();
+                return Attack.ATTACK_RANGE;
+            } else {
+                return Attack.NO_AMMO;
             }
-        } else if (itemInPlayer != null) {
+        }
+        if (itemInPlayer != null) {
             return Attack.NOT_EQUIPPED;
         }
         return null;
     }
+
 }

@@ -1,25 +1,17 @@
 public class Enemy {
 
     private String name;
-    private String description;
     private int health;
     private int damage;
-    private Weapon weapon;
 
-    public Enemy(String name, String description, int health, int damage, Weapon weapon) {
+    public Enemy(String name, int health, int damage) {
         this.name = name;
-        this.description = description;
         this.health = health;
         this.damage = damage;
-        this.weapon = weapon;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public int getHealth() {
@@ -28,10 +20,6 @@ public class Enemy {
 
     public int getDamage() {
         return damage;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
     }
 
 }

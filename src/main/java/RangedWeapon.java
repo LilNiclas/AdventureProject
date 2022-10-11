@@ -14,4 +14,14 @@ public class RangedWeapon extends Weapon{
     public void useAmmo() {
         ammunition--;
     }
+
+    public Boolean canUse() {
+        if (ammunition <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }
