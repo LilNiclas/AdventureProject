@@ -165,7 +165,7 @@ public class Player {
     }
 
     public EquipItem unEquipItem(String itemName) {
-        Weapon equippedWeapon = (Weapon) searchEquippedItem(itemName);
+        Weapon equippedWeapon = currentWeapon;
         if (equippedWeapon != null) {
             removeWeapon(itemName);
             itemListPlayer.add(equippedWeapon);
