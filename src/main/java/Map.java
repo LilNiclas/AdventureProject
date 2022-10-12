@@ -10,41 +10,42 @@ public class Map {
 
     //Rooms created
     //1
-    private Room wilderedHills = new Room("Wildered hills", "You are standing in the middle of a blooming field," +
-            " with a strong wind in the back, guiding you towards the massive barren sea");
+    private Room wilderedHills = new Room("Wildered hills", "You are standing in the middle of a blooming field, \n" +
+            "with a strong wind in the back, guiding you towards the treasure of your grandfather.");
     //2
-    private Room desertIsland = new Room("Deserted Island", "You've arrived at an unknown island and before you lays a " +
-            "sea of sand. " +
-            "The wind gushes sand in your face, and you can barely glimpse a port at the other side of the island. " +
-            "But in this hot and intense climate you wont last a day without water");
+    private Room desertIsland = new Room("Deserted Island", "You've arrived at the neighbouring desert island and before you lays a \n" +
+            "sea of sand. The wind gushes sand in your face, you spot a weak soldier along the coast.");
     //3
-    private Room ships = new Room("Pirates", "You set sails to Piratos Vile, 30 minutes into the trip you're approached " +
-            "by a pirate ship. They seem full of gluttony and rage, they won't let you continue, its a fight og " +
+    private Room ships = new Room("Pirates", "You set sail onwards, 30 minutes into the trip you're approached \n" +
+            "by a pirate ship. They seem full of gluttony and rage, its a fight og " +
             "flight situation!");
     //4
     private Room overgrownIsland = new Room("Overgrown island", "One massive tree sticks up from the island before you, " +
-            "the tree reaches the sky." +
-            " As you explora the island you spot a dangling rope ladder, its seems to be hanging from the upper " +
-            "branches of the tree");
+            "the tree reaches the sky. \n"+
+            "As you explore the island you spot a strong 2 meter tall knight, you can move on but he might have some good loot");
+
     //5
-    private Room bossfightVulkano = new Room("Vulcano isle", "vulcano and  boss fight");
+    private Room bossfightVulkano = new Room("Vulcano Island", "VULCANO ISLAND. You've finally arrived, the island is dark and gloomy" +
+            "all covered in smoke from the vulcano. \n" +
+            "Out of the smoke steps a giant 3 meter tall troll with fire in his eyes its fight or flight!!");
 
     //6
-    private Room rockyHill = new Room("Rocky hill", "You've arrived at a small little island, the island seems to be one" +
-            " big hollow rock," +
-            " the ground is filled up wtih hay and you see a man sleeping on the ground");
+    private Room rockyHill = new Room("Rocky hill", "You've arrived at a small little island, the island seems to be one \n" +
+            "massive rock. A long the edge of the rock you spot a small hurdle of 2 goats");
     //7
-    private Room iceIsland = new Room("Icy island", "You have set the anchor before reaching the island because of the " +
-            "thick layer of ice surrounding it. " +
-            "You tread through the knee-high snow and spot a cabin on top of a hill, its been long forgotten " +
-            "but the wood kept strong in the cold weather, you look around and find a bunch of goods");
+    private Room iceIsland = new Room("Icy island", "You have thrown the anchor before reaching the island, because of the " +
+            "thick layer of ice surrounding it. \n" +
+            "There seems to be nothing special on the island, just a cold calm island \n" +
+            "In the far distance you glimpse what seems to be smoke from the a massive vulcano");
     //8
-    private Room amazonianIsland = new Room("AmazonianIsland", "jungle island / last island before boss");
+    private Room amazonianIsland = new Room("The Amazonian Forest", "You've arrived at what seems to be a jungle island, " +
+            "the trees are big and the forrest dense. \n" + "As you're exploring you stumble upon a local with a spear, fight or walk on? \n" +
+            "The sky has gone grey, Vulcano Island is nearby, it seems to be coming from north");
 
     //9
-    private Room pirateIsland = new Room("PirateIsland", "Ahh finally arrived, and in one piece. The atmosphere is dull" +
-            " and depressing at the harbour, " +
-            "you go to the local bar to get some information on the legendary island mentioned in your fathers last will");
+    private Room pirateIsland = new Room("PirateIsland", "You've come to a pirate port, weirdly enough it seems to be quiet og chill. \n" +
+            "Time to regain energy before heading on towards Vulcano Island" +
+            "In the far distance you can spot what might be the top of a mountain...");
 
 
     // Items
@@ -63,7 +64,7 @@ public class Map {
     //Enemy Weapons
     private MeleeWeapon sword = new MeleeWeapon("sword", 40);
     private MeleeWeapon knife = new MeleeWeapon("knife", 25);
-    private MeleeWeapon sabre = new MeleeWeapon("sabre", 35);
+    private MeleeWeapon sabel = new MeleeWeapon("sabre", 35);
     private MeleeWeapon horns = new MeleeWeapon("horns", 20);
     private MeleeWeapon spear = new MeleeWeapon("spear", 40);
     private MeleeWeapon rock = new MeleeWeapon("rock", 20);
@@ -76,17 +77,17 @@ public class Map {
     private Food frozenwater = new Food(10, "frozenwater", "A bottle of water that is frozen");
     private Food berries = new Food(25, "berries", "A bush with a lot of bribe berries, ready to be eaten ");
     private Food flesh = new Food(-25, "flesh", "Rotten flesh from a death body");
-    private Food meat = new Food(40, "meat", "dried meat that contains a lot of protein");
+    private Food meat = new Food(40, "meat", "meat that contains a lot of protein");
     private Food basket = new Food(30, "basket", "A basket full of fresh fruits" );
 
 
     //Enemy "name", health, dmg
-    private Enemy pirate = new Enemy("pirate", 60, sabre);
+    private Enemy pirate = new Enemy("pirate", 60, sabel);
     private Enemy soldier = new Enemy("soldier", 30, knife);
     private Enemy knight = new Enemy("knight", 125, sword);
-    private Enemy goat = new Enemy("goat", 80, horns);
-    private Enemy worrier = new Enemy("worrier", 80, spear);
-    private Enemy smallmonster = new Enemy("smallmonster", 40, rock);
+    private Enemy goat = new Enemy("goat", 30, horns, meat);
+    private Enemy warrior = new Enemy("worrier", 80, spear);
+    private Enemy smallmonster = new Enemy("small Monster", 40, rock);
     private Enemy bigmonster = new Enemy("bigmonster", 90, rock);
     private Enemy heavyknight = new Enemy("heavyknight", 175, sword);
 
@@ -101,7 +102,6 @@ public class Map {
 
         wilderedHills.addItem(bat);
         wilderedHills.addItem(cheese);
-        wilderedHills.addItem(lamp);
 
         //2
         desertIsland.setEast(ships);
@@ -151,13 +151,14 @@ public class Map {
         amazonianIsland.setWest(iceIsland);
 
         amazonianIsland.addItem(basket);
-        amazonianIsland.addEnemy(worrier);
+        amazonianIsland.addEnemy(warrior);
         //9
         pirateIsland.setNorth(rockyHill);
         pirateIsland.setWest(amazonianIsland);
 
         pirateIsland.addItem(meat);
-        pirateIsland.addEnemy(pirate);
+        pirateIsland.addItem(berries);
+
     }
 
     public Room getStartRoom() {

@@ -10,8 +10,20 @@ public class UserInterface {
 
     public void userInput() {
         boolean isRunning = true;
-        System.out.println("Welcome to Grandpa's Lost Treasure ");
-
+        System.out.println("Welcome to Grandpa's Lost Treasure \n");
+        System.out.println("You have received a letter from the government about your grandfather's death. Your grandfather left a personal Letter for you. \n" +
+                "\n" +
+                "My dearest\n" +
+                "I'm at my last breath, and will not make it home. \n" +
+                "There’s something I've been hiding from you all this time, \n" +
+                "i have a treasure hidden away on Vulcano Island with all the riches in the world.\n" +
+                "It’s not gonna be easy, there will be danger in your way, \n" +
+                "so get yourself ready before you head to Vulcano island.\n" +
+                "-Grandpa\n" +
+                "\n" +
+                "A journey lies ahead of you, you will have to leave the comforts of home and explore. \n" +
+                "Type 'Look' to see your surroundings. \n" +
+                "Type 'Help' to get help/instructions on what to do.");
 
         while (isRunning && adventure.getPlayer().playerDeath()) {
 
@@ -49,21 +61,21 @@ public class UserInterface {
                 }
 
                 case "help", "Help", "Instruction", "Instructions", "instruction", "instructions" -> {
-                    System.out.println("Instruction manual");
-                    System.out.println("'Look' Player will give a description of the area surrounding the player");
-                    System.out.println("'Go + direction'(north, east, south, west) Player will move the in the given direction");
-                    System.out.println("'Inv' or 'Inventory' Player will show the players inventory");
-                    System.out.println("'Health' Player will show the players health");
-                    System.out.println("'Take + item' Player will pick up items. The item will be located in the players inventory");
-                    System.out.println("'Drop + item' Player will drop the item. The item will be located in the room");
-                    System.out.println("'Eat + item' Player will eat the item if possible");
-                    System.out.println("'Equip + item' Player will equip weapon");
-                    System.out.println("'Unequip + item' Player will equip weapon");
-                    System.out.println("'Attack + enemy' Player will attack an enemy");
-                    System.out.println("'Exit' The game will shut down");
+                    System.out.println("Instruction manual \n" +
+                    "'Look' Player will give a description of the area surrounding the player \n" +
+                    "'Go + direction'(north, east, south, west) Player will move the in the given direction \n" +
+                    "'Inv' or 'Inventory' Player will show the players inventory \n" +
+                    "'Health' Player will show the players health \n" +
+                    "'Take + item' Player will pick up items. The item will be located in the players inventory \n" +
+                    "'Drop + item' Player will drop the item. The item will be located in the room \n" +
+                    "'Eat + item' Player will eat the item if possible \n" +
+                    "'Equip + item' Player will equip weapon \n" +
+                    "'Unequip + item' Player will equip weapon \n" +
+                    "'Attack + enemy' Player will attack an enemy \n" +
+                    "'Exit' The game will shut down");
                 }
 
-                case "look", "look around", "Look", "Room", "room" -> {
+                case "look", "look around", "Look", "Room", "room", "See", "see" -> {
                     System.out.println(room.getName());
                     System.out.println(room.getDescription());
                     System.out.println(room.getItemListRoom());
@@ -133,7 +145,7 @@ public class UserInterface {
 
                     if (unEquipItem == EquipItem.UNEQUIP) {
                         System.out.println(itemInPlayer + " unequipped");
-                    } else if (unEquipItem == EquipItem.NOT_FOUND){
+                    } else if (unEquipItem == EquipItem.NOT_FOUND) {
                         System.out.println(itemInPlayer + "unequipped");
                     }
                 }

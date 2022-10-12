@@ -2,9 +2,9 @@ public class Enemy {
 
     private String name;
     private int health;
-    private int damage;
     private Room room;
     private Weapon currentWeapon;
+    private Food food;
 
     public Enemy(String name, int health, Weapon currentWeapon) {
         this.name = name;
@@ -12,12 +12,17 @@ public class Enemy {
         this.currentWeapon = currentWeapon;
     }
 
-    public String getName() {
-        return name;
+    public Enemy(String name, int health, Weapon currentWeapon, Food food) {
+        this.name = name;
+        this.health = health;
+        this.currentWeapon = currentWeapon;
+        this.food = food;
     }
 
-    public int getHealth() {
-        return health;
+
+
+    public String getName() {
+        return name;
     }
 
     public Weapon getCurrentWeapon() {
