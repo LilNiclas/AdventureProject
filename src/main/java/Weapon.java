@@ -8,6 +8,8 @@ public abstract class Weapon extends Item {
         this.damage = damage;
     }
 
+    //public String getName()
+
     public int getDamage() {
         return damage;
     }

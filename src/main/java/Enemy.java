@@ -23,7 +23,7 @@ public class Enemy {
         return damage;
     }
 
-    public boolean death() {
+    public boolean enemyDeath() {
         if (health <= 0) {
             room.removeEnemy(null); //ved ikke helt hvad der skal i parameteret
             return true;

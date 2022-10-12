@@ -72,6 +72,16 @@ public class Player {
         return null;
     }
 
+    public Weapon removeWeapon(String itemName) {
+        for (Weapon weapon : currentWeapon) {
+            if (weapon.getItemName().equals(itemName)) {
+                currentWeapon.remove(weapon);
+                return weapon;
+            }
+        }
+        return null;
+    }
+
     public Item takeItem(String itemName) {
         Item pickedUpItem = getCurrentRoom().removeItem(itemName);
         addItem(pickedUpItem);
@@ -93,7 +103,7 @@ public class Player {
         return null;
     }
 
-    public Item getEquippedItem(String name) {
+    public Item searchEquippedItem(String name) {
         for (Item item : currentWeapon) {
             if (item.getItemName().equals(name)) {
                 return item;
@@ -156,25 +166,41 @@ public class Player {
         }
     }
 
+    public EquipItem unEquipItem(String itemName) {
+        Weapon equippedWeapon = (Weapon) searchEquippedItem(itemName);
+        if (equippedWeapon != null) {
+            removeWeapon(itemName);
+            itemListPlayer.add(equippedWeapon);
+            return EquipItem.UNEQUIP;
+        } else {
+            return EquipItem.NOT_FOUND;
+        }
+    }
+
     public Attack attack(String itemName) {
         Item itemInPlayer = searchItemInv(itemName);
-        Item weapon = getEquippedItem(itemName);
+        Item weapon = searchEquippedItem(itemName);
+        ArrayList<Enemy> enemy = currentRoom.getEnemies();
         if (weapon != null) {
-            if (weapon instanceof MeleeWeapon meleeWeapon) {
-                (meleeWeapon).getDamage();
-                return Attack.ATTACK_MELEE;
-            } else if (weapon instanceof RangedWeapon rangedWeapon && rangedWeapon.canUse()) {
-                (rangedWeapon).getDamage();
-                (rangedWeapon).useAmmo();
-                return Attack.ATTACK_RANGE;
-            } else {
-                return Attack.NO_AMMO;
+            if (enemy != null) {
+                if (weapon instanceof MeleeWeapon meleeWeapon) {
+                    (meleeWeapon).getDamage();
+                    return Attack.ATTACK_MELEE;
+                } else if (weapon instanceof RangedWeapon rangedWeapon && rangedWeapon.canUse()) {
+                    (rangedWeapon).getDamage();
+                    (rangedWeapon).useAmmo();
+                    return Attack.ATTACK_RANGE;
+                } else {
+                    return Attack.NO_AMMO;
+                }
             }
-        }
-        if (itemInPlayer != null) {
-            return Attack.NOT_EQUIPPED;
+            if (itemInPlayer != null) {
+                return Attack.NOT_EQUIPPED;
+            }
+            return Attack.NO_ENEMY;
         }
         return null;
     }
+
 
 }

@@ -108,10 +108,10 @@ public class UserInterface {
                 case "equip", "Equip", "wield", "Wield" -> {
                     EquipItem equipItem = adventure.equipItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
-                    Item getEquippedItem = adventure.getEquippedItem(commandParameter);
+                    Item searchEquippedItem = adventure.searchEquippedItem(commandParameter);
 
                     if (equipItem == EquipItem.EQUIPPING_WEAPON) {
-                        System.out.println(getEquippedItem + " equipped");
+                        System.out.println(searchEquippedItem + " equipped");
                     } else if (equipItem == EquipItem.NOT_WEAPON) {
                         System.out.println(itemInPlayer + " can not be equipped");
                     } else if (equipItem == EquipItem.NOT_FOUND) {
@@ -119,20 +119,29 @@ public class UserInterface {
                     }
                 }
 
+                case "unequip", "Unequip" -> {
+                    EquipItem unEquipItem = adventure.unEquipItem(commandParameter);
+                    Item itemInPlayer = adventure.searchItemInv(commandParameter);
+
+                    if (unEquipItem == EquipItem.UNEQUIP) {
+                        System.out.println(itemInPlayer + " unequipped");
+                    } else if (unEquipItem == EquipItem.NOT_FOUND){
+                        System.out.println(itemInPlayer + "unequipped");
+                    }
+                }
+
                 case "Attack", "attack", "Shoot", "shoot", "swing", "Swing" -> {
                     Attack attack = adventure.attack(commandParameter);
-                    Item getEquippedItem = adventure.getEquippedItem(commandParameter);
+                    Item searchEquippedItem = adventure.searchEquippedItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
                     if (attack == Attack.ATTACK_MELEE) {
-                        System.out.println("Melee attack. " + ((MeleeWeapon) getEquippedItem).getDamage() + " damage dealt");
+                        System.out.println("Melee attack. " + ((MeleeWeapon) searchEquippedItem).getDamage() + " damage dealt");
                     } else if (attack == Attack.ATTACK_RANGE) {
-                        System.out.println("Range attack. " + ((RangedWeapon) getEquippedItem).getDamage() + " damage dealt");
-                        System.out.println(((RangedWeapon) getEquippedItem).getAmmunition() + " shots left");
-
+                        System.out.println("Range attack. " + ((RangedWeapon) searchEquippedItem).getDamage() + " damage dealt");
+                        System.out.println(((RangedWeapon) searchEquippedItem).getAmmunition() + " shots left");
                     } else if (attack == Attack.NO_AMMO) {
                         System.out.println("No ammunition left");
-
                     } else if (attack == Attack.NOT_EQUIPPED) {
                         System.out.println("You dont have " + itemInPlayer + " equipped");
                     } else {

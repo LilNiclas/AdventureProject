@@ -44,8 +44,8 @@ public class Adventure {
         return player.searchItemInv(itemName);
     }
 
-    public Item getEquippedItem(String itemName) {
-        return player.getEquippedItem(itemName);
+    public Item searchEquippedItem(String itemName) {
+        return player.searchEquippedItem(itemName);
     }
 
 
@@ -60,6 +60,10 @@ public class Adventure {
 
     public EquipItem equipItem(String itemName) {
         return player.equipItem(itemName);
+    }
+
+    public EquipItem unEquipItem(String itemName) {
+        return player.unEquipItem(itemName);
     }
 
     public Attack attack(String itemName) {
