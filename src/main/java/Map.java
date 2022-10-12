@@ -55,17 +55,25 @@ public class Map {
     private MeleeWeapon bat = new MeleeWeapon("bat", 15);
 
     //RangedWeapons
-    private RangedWeapon gun = new RangedWeapon("gun", 20, 2);
+    private RangedWeapon handcannon = new RangedWeapon("handcannon", 50, 3);
+    private RangedWeapon snowballs = new RangedWeapon("snowballs", 5, 10);
+    private RangedWeapon bow = new RangedWeapon("bow", 40, 5);
+
 
     //Enemy Weapons
     private MeleeWeapon sword = new MeleeWeapon("sword", 40);
+    private MeleeWeapon knife = new MeleeWeapon("knife", 25);
+    private MeleeWeapon sabre = new MeleeWeapon("sabre", 35);
+    private MeleeWeapon horns = new MeleeWeapon("horns", 20);
+    private MeleeWeapon spear = new MeleeWeapon("spear", 40);
+    private MeleeWeapon rock = new MeleeWeapon("rock", 20);
 
     //food item
     private Food cheese = new Food(25, "cheese", ". A big block of cheese");
     private Food water = new Food(-15, "dirty water", ". A bucket of dirty water");
     private Food beans = new Food(20, "beans", "A can of baked beans");
     private Food coconut = new Food(50,"coconut", "A huge overgrown coconut");
-    private Food frozenWater = new Food(10, "frozenwater", "A bottle of water that is frozen");
+    private Food frozenwater = new Food(10, "frozenwater", "A bottle of water that is frozen");
     private Food berries = new Food(25, "berries", "A bush with a lot of bribe berries, ready to be eaten ");
     private Food flesh = new Food(-25, "flesh", "Rotten flesh from a death body");
     private Food meat = new Food(40, "meat", "dried meat that contains a lot of protein");
@@ -73,7 +81,16 @@ public class Map {
 
 
     //Enemy "name", health, dmg
-    private Enemy pirate = new Enemy("pirate", 60, sword);
+    private Enemy pirate = new Enemy("pirate", 60, sabre);
+    private Enemy soldier = new Enemy("soldier", 30, knife);
+    private Enemy knight = new Enemy("knight", 125, sword);
+    private Enemy goat = new Enemy("goat", 80, horns);
+    private Enemy worrier = new Enemy("worrier", 80, spear);
+    private Enemy smallmonster = new Enemy("smallmonster", 40, rock);
+    private Enemy bigmonster = new Enemy("bigmonster", 90, rock);
+    private Enemy heavyknight = new Enemy("heavyknight", 175, sword);
+
+
 
     public void setRooms() {
         //Rooms attributes
@@ -91,45 +108,56 @@ public class Map {
         desertIsland.setWest(wilderedHills);
 
         desertIsland.addItem(flesh);
-
+        desertIsland.addEnemy(soldier);
         //3
         ships.setEast(desertIsland);
         ships.setSouth(rockyHill);
 
         ships.addItem(water);
         ships.addItem(beans);
+        ships.addItem(handcannon);
 
         //4
         overgrownIsland.setNorth(wilderedHills);
         overgrownIsland.setSouth(iceIsland);
 
         overgrownIsland.addItem(coconut);
+        overgrownIsland.addEnemy(knight);
 
         //5
         bossfightVulkano.setSouth(amazonianIsland);
 
+        bossfightVulkano.addEnemy(smallmonster);
+        bossfightVulkano.addEnemy(bigmonster);
+        bossfightVulkano.addEnemy(heavyknight);
+
+        bossfightVulkano.addItem(chest);
         //6
         rockyHill.setNorth(ships);
         rockyHill.setSouth(pirateIsland);
 
         rockyHill.addItem(berries);
+        rockyHill.addEnemy(goat);
 
         //7
         iceIsland.setNorth(overgrownIsland);
         iceIsland.setEast(amazonianIsland);
 
-        iceIsland.addItem(frozenWater);
+        iceIsland.addItem(frozenwater);
+        iceIsland.addItem(snowballs);
         //8
         amazonianIsland.setNorth(bossfightVulkano);
         amazonianIsland.setEast(pirateIsland);
         amazonianIsland.setWest(iceIsland);
 
         amazonianIsland.addItem(basket);
+        amazonianIsland.addEnemy(worrier);
         //9
         pirateIsland.setNorth(rockyHill);
         pirateIsland.setWest(amazonianIsland);
 
         pirateIsland.addItem(meat);
+        pirateIsland.addEnemy(pirate);
     }
 
     public Room getStartRoom() {
