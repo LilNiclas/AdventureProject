@@ -61,6 +61,8 @@ public class UserInterface {
                     System.out.println(room.getDescription());
                     System.out.println("\n");
                     System.out.println(room.getItemListRoom());
+                    System.out.println(room.getEnemies());
+
                 }
 
                 case "take", "Take", "pick up", "Pick up" -> {

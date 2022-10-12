@@ -60,7 +60,7 @@ public class Map {
     private Food cheese = new Food(25, "Cheese", ". A big block of cheese");
     private Food water = new Food(-15, "Dirty water", ". A bucket of dirty water");
 
-    //Enemy
+    //Enemy "name", health, dmg
     private Enemy pirate = new Enemy("Pirate", 60, 15);
 
     public void setRooms() {
