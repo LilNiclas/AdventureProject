@@ -48,7 +48,9 @@ public class UserInterface {
                     if (adventure.go(commandParameter)) {
                         System.out.println(adventure.getCurrentRoom().getName());
                         System.out.println(adventure.getCurrentRoom().getDescription());
+
                         System.out.println(adventure.getCurrentRoom().getItemListRoom());
+                        System.out.println(adventure.getCurrentRoom().getEnemies());
 
                     } else {
                         System.out.println("Can't go that way");
@@ -62,22 +64,23 @@ public class UserInterface {
 
                 case "help", "Help", "Instruction", "Instructions", "instruction", "instructions" -> {
                     System.out.println("Instruction manual \n" +
-                    "'Look' Player will give a description of the area surrounding the player \n" +
-                    "'Go + direction'(north, east, south, west) Player will move the in the given direction \n" +
-                    "'Inv' or 'Inventory' Player will show the players inventory \n" +
-                    "'Health' Player will show the players health \n" +
-                    "'Take + item' Player will pick up items. The item will be located in the players inventory \n" +
-                    "'Drop + item' Player will drop the item. The item will be located in the room \n" +
-                    "'Eat + item' Player will eat the item if possible \n" +
-                    "'Equip + item' Player will equip weapon \n" +
-                    "'Unequip + item' Player will equip weapon \n" +
-                    "'Attack + enemy' Player will attack an enemy \n" +
-                    "'Exit' The game will shut down");
+                            "'Look' Player will give a description of the area surrounding the player \n" +
+                            "'Go + direction'(north, east, south, west) Player will move the in the given direction \n" +
+                            "'Inv' or 'Inventory' Player will show the players inventory \n" +
+                            "'Health' Player will show the players health \n" +
+                            "'Take + item' Player will pick up items. The item will be located in the players inventory \n" +
+                            "'Drop + item' Player will drop the item. The item will be located in the room \n" +
+                            "'Eat + item' Player will eat the item if possible \n" +
+                            "'Equip + item' Player will equip weapon \n" +
+                            "'Unequip + item' Player will equip weapon \n" +
+                            "'Attack + enemy' Player will attack an enemy \n" +
+                            "'Exit' The game will shut down");
                 }
 
                 case "look", "look around", "Look", "Room", "room", "See", "see" -> {
                     System.out.println(room.getName());
                     System.out.println(room.getDescription());
+                    System.out.println("\n");
                     System.out.println(room.getItemListRoom());
                     System.out.println(room.getEnemies());
 
@@ -158,6 +161,8 @@ public class UserInterface {
                     if (attack == Attack.ATTACK_ENEMY) {
                         System.out.println("Enemy attack. " + ((Weapon) searchEquippedItem).getDamage() + " damage dealt");
                         System.out.println(((Weapon) searchEquippedItem).getAmmunition() + " shots left");
+                        System.out.println(commandParameter + " health: " + adventure.getEnemyHealth(commandParameter));
+                        System.out.println("Player health: " + adventure.getPlayerHealth());
                     } else if (attack == Attack.KILLED_ENEMY) {
                         System.out.println(commandParameter + " is dead");
                     } else if (attack == Attack.NO_AMMO) {

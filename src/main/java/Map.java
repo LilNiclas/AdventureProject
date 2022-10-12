@@ -21,7 +21,7 @@ public class Map {
             "flight situation!");
     //4
     private Room overgrownIsland = new Room("Overgrown island", "One massive tree sticks up from the island before you, " +
-            "the tree reaches the sky. \n"+
+            "the tree reaches the sky. \n" +
             "As you explore the island you spot a strong 2 meter tall knight, you can move on but he might have some good loot");
 
     //5
@@ -64,7 +64,7 @@ public class Map {
     //Enemy Weapons
     private MeleeWeapon sword = new MeleeWeapon("sword", 40);
     private MeleeWeapon knife = new MeleeWeapon("knife", 25);
-    private MeleeWeapon sabel = new MeleeWeapon("sabre", 35);
+    private MeleeWeapon sabel = new MeleeWeapon("sabel", 35);
     private MeleeWeapon horns = new MeleeWeapon("horns", 20);
     private MeleeWeapon spear = new MeleeWeapon("spear", 40);
     private MeleeWeapon rock = new MeleeWeapon("rock", 20);
@@ -73,12 +73,12 @@ public class Map {
     private Food cheese = new Food(25, "cheese", ". A big block of cheese");
     private Food water = new Food(-15, "dirty water", ". A bucket of dirty water");
     private Food beans = new Food(20, "beans", "A can of baked beans");
-    private Food coconut = new Food(50,"coconut", "A huge overgrown coconut");
+    private Food coconut = new Food(50, "coconut", "A huge overgrown coconut");
     private Food frozenwater = new Food(10, "frozenwater", "A bottle of water that is frozen");
     private Food berries = new Food(25, "berries", "A bush with a lot of bribe berries, ready to be eaten ");
     private Food flesh = new Food(-25, "flesh", "Rotten flesh from a death body");
     private Food meat = new Food(40, "meat", "meat that contains a lot of protein");
-    private Food basket = new Food(30, "basket", "A basket full of fresh fruits" );
+    private Food basket = new Food(30, "basket", "A basket full of fresh fruits");
 
 
     //Enemy "name", health, dmg
@@ -92,11 +92,9 @@ public class Map {
     private Enemy heavyknight = new Enemy("heavyknight", 175, sword);
 
 
-
     public void setRooms() {
         //Rooms attributes
         //1
-        pirate.setRoom(wilderedHills);
         wilderedHills.setEast(desertIsland);
         wilderedHills.setSouth(overgrownIsland);
 
@@ -104,11 +102,13 @@ public class Map {
         wilderedHills.addItem(cheese);
 
         //2
+        soldier.setRoom(wilderedHills);
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);
 
         desertIsland.addItem(flesh);
         desertIsland.addEnemy(soldier);
+
         //3
         ships.setEast(desertIsland);
         ships.setSouth(rockyHill);
@@ -118,6 +118,7 @@ public class Map {
         ships.addItem(handcannon);
 
         //4
+        knight.setRoom(overgrownIsland);
         overgrownIsland.setNorth(wilderedHills);
         overgrownIsland.setSouth(iceIsland);
 
@@ -133,10 +134,13 @@ public class Map {
 
         bossfightVulkano.addItem(chest);
         //6
+        goat.setRoom(rockyHill);
+        goat.setRoom(rockyHill);
         rockyHill.setNorth(ships);
         rockyHill.setSouth(pirateIsland);
 
         rockyHill.addItem(berries);
+        rockyHill.addEnemy(goat);
         rockyHill.addEnemy(goat);
 
         //7
@@ -145,13 +149,16 @@ public class Map {
 
         iceIsland.addItem(frozenwater);
         iceIsland.addItem(snowballs);
+
         //8
+        warrior.setRoom(amazonianIsland);
         amazonianIsland.setNorth(bossfightVulkano);
         amazonianIsland.setEast(pirateIsland);
         amazonianIsland.setWest(iceIsland);
 
         amazonianIsland.addItem(basket);
         amazonianIsland.addEnemy(warrior);
+
         //9
         pirateIsland.setNorth(rockyHill);
         pirateIsland.setWest(amazonianIsland);

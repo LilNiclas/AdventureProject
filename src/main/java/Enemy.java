@@ -19,7 +19,9 @@ public class Enemy {
         this.food = food;
     }
 
-
+    public int getHealth() {
+        return health;
+    }
 
     public String getName() {
         return name;
@@ -33,9 +35,14 @@ public class Enemy {
         this.room = room;
     }
 
+    public void currentHealth(int damage) {
+        health -= damage;
+    }
+
     public boolean enemyDeath() {
         if (health <= 0) {
             room.addEnemyItem(currentWeapon);
+            room.addItem(food);
             room.removeEnemy(name);
             return true;
         } else {
@@ -43,14 +50,9 @@ public class Enemy {
         }
     }
 
-    public void currentHealth(int damage) {
-        health -= damage;
-    }
-
-
     @Override
     public String toString() {
-        return name + health;
+        return name + " " + health;
     }
 
 }

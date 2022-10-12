@@ -38,6 +38,11 @@ public class Player {
         return health;
     }
 
+    public int getEnemyHealth(String name) {
+        Enemy enemy = currentRoom.searchEnemy(name);
+        return enemy.getHealth();
+    }
+
 
     //setter
     public void setCurrentRoom(Room currentRoom) {

@@ -19,7 +19,15 @@ public class Adventure {
     }
 
     public Room getCurrentRoom() {
-            return player.getCurrentRoom();
+        return player.getCurrentRoom();
+    }
+
+    public int getPlayerHealth() {
+        return player.getHealth();
+    }
+
+    public int getEnemyHealth(String name) {
+        return player.getEnemyHealth(name);
     }
 
 
@@ -43,7 +51,6 @@ public class Adventure {
     public Item searchItemInv(String itemName) {
         return player.searchItemInv(itemName);
     }
-
 
 
     //Actions
