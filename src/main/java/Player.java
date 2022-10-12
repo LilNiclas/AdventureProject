@@ -184,7 +184,7 @@ public class Player {
             return Attack.NO_ENEMY;
         } else if (weapon.canUse()) {
             weapon.useAmmo();
-            enemy.currentHealth(weapon.getDamage());
+            enemy.currentHealth(weapon.getDamage());                //Take damage metode skal i enemy
             if (!enemy.enemyDeath()) {
                 currentHealth(enemy.getCurrentWeapon().getDamage());
             } else {

@@ -51,7 +51,8 @@ public class UserInterface {
                     System.out.println("'Take + item' Player will pick up items. The item will be located in the players inventory");
                     System.out.println("'Drop + item' Player will drop the item. The item will be located in the room");
                     System.out.println("'Eat + item' Player will eat the item if possible");
-                    System.out.println("'Equip + item' Player will equip a weapon");
+                    System.out.println("'Equip + item' Player will equip weapon");
+                    System.out.println("'Unequip + item' Player will equip weapon");
                     System.out.println("'Attack + enemy' Player will attack an enemy");
                     System.out.println("'Exit' The game will shut down");
                 }
