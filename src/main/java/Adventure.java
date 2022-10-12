@@ -47,8 +47,8 @@ public class Adventure {
 
 
     //Actions
-    public boolean go(String direction) {
-        return player.move(direction);
+    public boolean go(String commandParameter) {
+        return player.move(commandParameter);
     }
 
     public EatFood eatFood(String itemName) {

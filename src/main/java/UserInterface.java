@@ -10,7 +10,8 @@ public class UserInterface {
 
     public void userInput() {
         boolean isRunning = true;
-        System.out.println("Welcome to Adventure");
+        System.out.println("Welcome to 'Grandpa's Lost Treasure '");
+
 
         while (isRunning && adventure.getPlayer().playerDeath()) {
 
@@ -27,11 +28,16 @@ public class UserInterface {
 
             switch (command) {
                 case "go", "Go", "move", "Move" -> {
+                    // Fixed fejl med den skrev det info fra det room man gik fra når man gik i nyt room men hvis man skrev
+                    // look så var man faktisk i det nye room
+                    // fejlen var at vi har kortet koden ned med room. hvilket er gemt før switch casen og
+                    // adventure.getCurrentRoom (før switch casen) er altid de sidste room man var i før man man kalder
+                    // go funktionen
                     if (adventure.go(commandParameter)) {
-                        System.out.println(room.getName());
-                        System.out.println(room.getDescription());
-                        System.out.println("\n");
-                        System.out.println(room.getItemListRoom());
+                        System.out.println(adventure.getCurrentRoom().getName());
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                        System.out.println(adventure.getCurrentRoom().getItemListRoom());
+
                     } else {
                         System.out.println("Can't go that way");
                     }
@@ -58,10 +64,8 @@ public class UserInterface {
                 }
 
                 case "look", "look around", "Look", "Room", "room" -> {
-                    System.out.println("Oh a new island");
                     System.out.println(room.getName());
                     System.out.println(room.getDescription());
-                    System.out.println("\n");
                     System.out.println(room.getItemListRoom());
                     System.out.println(room.getEnemies());
 

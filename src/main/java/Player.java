@@ -112,16 +112,16 @@ public class Player {
 
 
     //Actions
-    public boolean move(String direction) {
+    public boolean move(String commandParameter) {
         Room requestedRoom = null;
 
-        if (direction.charAt(0) == 'n') {
+        if (commandParameter.charAt(0) == 'n') {
             requestedRoom = currentRoom.getNorth();
-        } else if (direction.charAt(0) == 'e') {
+        } else if (commandParameter.charAt(0) == 'e') {
             requestedRoom = currentRoom.getEast();
-        } else if (direction.charAt(0) == 's') {
+        } else if (commandParameter.charAt(0) == 's') {
             requestedRoom = currentRoom.getSouth();
-        } else if (direction.charAt(0) == 'w') {
+        } else if (commandParameter.charAt(0) == 'w') {
             requestedRoom = currentRoom.getWest();
         }
 
