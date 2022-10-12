@@ -122,7 +122,6 @@ public class Room {
         return null;
     }
 
-
     public Enemy searchEnemy(String searchEnemy) {
         for (Enemy enemy : enemies) {
             if (enemy.getName().equals(searchEnemy)) {
