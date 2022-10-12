@@ -24,7 +24,7 @@ public class Adventure {
 
 
     //Items
-    public ArrayList<Weapon> getCurrentWeapon() {
+    public Weapon getCurrentWeapon() {
         return player.getCurrentWeapon();
     }
 
@@ -44,9 +44,6 @@ public class Adventure {
         return player.searchItemInv(itemName);
     }
 
-    public Item searchEquippedItem(String itemName) {
-        return player.searchEquippedItem(itemName);
-    }
 
 
     //Actions

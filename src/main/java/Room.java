@@ -14,7 +14,7 @@ public class Room {
     private Room south;
     private Room west;
 
-    public Room(String name, String description){
+    public Room(String name, String description) {
         this.name = name;
         this.description = description;
         this.north = null;
@@ -70,6 +70,7 @@ public class Room {
     public ArrayList<Item> getItemListRoom() {
         return itemListRoom;
     }
+
     public ArrayList<Enemy> getEnemies() {
         return enemies;
     }
@@ -87,12 +88,17 @@ public class Room {
         enemies.add(enemy);
     }
 
+    public Weapon addEnemyItem(Weapon weapon) {
+        itemListRoom.add(weapon);
+        return weapon;
+    }
+
     public Item removeItem(String name) {
         for (Item item : itemListRoom) {
-           if (item.getItemName().equals(name)) {
-               itemListRoom.remove(item);
-               return item;
-           }
+            if (item.getItemName().equals(name)) {
+                itemListRoom.remove(item);
+                return item;
+            }
         }
         return null;
     }
@@ -111,6 +117,16 @@ public class Room {
         for (Item item : itemListRoom) {
             if (item.getItemName().equals(name)) {
                 return item;
+            }
+        }
+        return null;
+    }
+
+
+    public Enemy searchEnemy(String searchEnemy) {
+        for (Enemy enemy : enemies) {
+            if (enemy.getName().equals(searchEnemy)) {
+                return enemy;
             }
         }
         return null;

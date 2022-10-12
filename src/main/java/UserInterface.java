@@ -12,7 +12,8 @@ public class UserInterface {
         boolean isRunning = true;
         System.out.println("Welcome to Adventure");
 
-        while (isRunning) {
+        while (isRunning && adventure.getPlayer().playerDeath()) {
+
             String userInput = scan.nextLine();
             String[] userInputList = userInput.split(" ");
             String command = userInputList[0];
@@ -110,7 +111,7 @@ public class UserInterface {
                 case "equip", "Equip", "wield", "Wield" -> {
                     EquipItem equipItem = adventure.equipItem(commandParameter);
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
-                    Item searchEquippedItem = adventure.searchEquippedItem(commandParameter);
+                    Item searchEquippedItem = adventure.getCurrentWeapon();
 
                     if (equipItem == EquipItem.EQUIPPING_WEAPON) {
                         System.out.println(searchEquippedItem + " equipped");
@@ -134,14 +135,14 @@ public class UserInterface {
 
                 case "Attack", "attack", "Shoot", "shoot", "swing", "Swing" -> {
                     Attack attack = adventure.attack(commandParameter);
-                    Item searchEquippedItem = adventure.searchEquippedItem(commandParameter);
+                    Item searchEquippedItem = adventure.getCurrentWeapon();
                     Item itemInPlayer = adventure.searchItemInv(commandParameter);
 
-                    if (attack == Attack.ATTACK_MELEE) {
-                        System.out.println("Melee attack. " + ((MeleeWeapon) searchEquippedItem).getDamage() + " damage dealt");
-                    } else if (attack == Attack.ATTACK_RANGE) {
-                        System.out.println("Range attack. " + ((RangedWeapon) searchEquippedItem).getDamage() + " damage dealt");
-                        System.out.println(((RangedWeapon) searchEquippedItem).getAmmunition() + " shots left");
+                    if (attack == Attack.ATTACK_ENEMY) {
+                        System.out.println("Enemy attack. " + ((Weapon) searchEquippedItem).getDamage() + " damage dealt");
+                        System.out.println(((Weapon) searchEquippedItem).getAmmunition() + " shots left");
+                    } else if (attack == Attack.KILLED_ENEMY) {
+                        System.out.println(commandParameter + " is dead");
                     } else if (attack == Attack.NO_AMMO) {
                         System.out.println("No ammunition left");
                     } else if (attack == Attack.NOT_EQUIPPED) {
@@ -155,6 +156,9 @@ public class UserInterface {
                     System.out.println("Invalid input");
                 }
             }
+        }
+        if (!adventure.getPlayer().playerDeath()) {
+            System.out.println("GAME OVER - YOU DIED");
         }
     }
 }

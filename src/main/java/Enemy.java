@@ -4,11 +4,12 @@ public class Enemy {
     private int health;
     private int damage;
     private Room room;
+    private Weapon currentWeapon;
 
-    public Enemy(String name, int health, int damage) {
+    public Enemy(String name, int health, Weapon currentWeapon) {
         this.name = name;
         this.health = health;
-        this.damage = damage;
+        this.currentWeapon = currentWeapon;
     }
 
     public String getName() {
@@ -19,18 +20,28 @@ public class Enemy {
         return health;
     }
 
-    public int getDamage() {
-        return damage;
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public boolean enemyDeath() {
         if (health <= 0) {
-            room.removeEnemy(null); //ved ikke helt hvad der skal i parameteret
+            room.addEnemyItem(currentWeapon);
+            room.removeEnemy(name);
             return true;
         } else {
             return false;
         }
     }
+
+    public void currentHealth(int damage) {
+        health -= damage;
+    }
+
 
 
 }

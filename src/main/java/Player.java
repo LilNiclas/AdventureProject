@@ -13,11 +13,10 @@ public class Player {
     private int health;
 
     private ArrayList<Item> itemListPlayer;
-    private ArrayList<Weapon> currentWeapon;
+    private Weapon currentWeapon;
 
     public Player() {
         itemListPlayer = new ArrayList<>();
-        currentWeapon = new ArrayList<>();
         health = 100;
     }
 
@@ -25,7 +24,7 @@ public class Player {
         return itemListPlayer;
     }
 
-    public ArrayList<Weapon> getCurrentWeapon() {
+    public Weapon getCurrentWeapon() {
         return currentWeapon;
     }
 
@@ -50,6 +49,19 @@ public class Player {
         return null;
     }
 
+    public void currentHealth(int damage) {
+        health -= damage;
+    }
+
+    public boolean playerDeath() {
+        if (health <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
     //Metoder til player array
     //AddItem       (add Item til playerinventory Array)
     //RemoveItem    (remove item fra fra playerInventory Array)
@@ -73,14 +85,8 @@ public class Player {
         return null;
     }
 
-    public Weapon removeWeapon(String itemName) {
-        for (Weapon weapon : currentWeapon) {
-            if (weapon.getItemName().equals(itemName)) {
-                currentWeapon.remove(weapon);
-                return weapon;
-            }
-        }
-        return null;
+    public void removeWeapon(String itemName) {
+        currentWeapon = null;
     }
 
     public Item takeItem(String itemName) {
@@ -98,15 +104,6 @@ public class Player {
     public Item searchItemInv(String itemName) {
         for (Item item : itemListPlayer) {
             if (item.getItemName().equals(itemName)) {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    public Item searchEquippedItem(String name) {
-        for (Item item : currentWeapon) {
-            if (item.getItemName().equals(name)) {
                 return item;
             }
         }
@@ -156,8 +153,8 @@ public class Player {
         Item itemInPlayer = searchItemInv(itemName);
         if (itemInPlayer != null) {
             if (itemInPlayer instanceof Weapon weapon) {
+                currentWeapon = weapon;
                 removeItem(itemName);
-                currentWeapon.add(weapon);
                 return EquipItem.EQUIPPING_WEAPON;
             } else {
                 return EquipItem.NOT_WEAPON;
@@ -179,29 +176,24 @@ public class Player {
     }
 
     public Attack attack(String itemName) {
-        Item itemInPlayer = searchItemInv(itemName);
-        Item weapon = searchEquippedItem(itemName);
-        ArrayList<Enemy> enemy = currentRoom.getEnemies();
-        if (weapon != null) {
-            if (enemy != null) {
-                if (weapon instanceof MeleeWeapon meleeWeapon) {
-                    (meleeWeapon).getDamage();
-                    return Attack.ATTACK_MELEE;
-                } else if (weapon instanceof RangedWeapon rangedWeapon && rangedWeapon.canUse()) {
-                    (rangedWeapon).getDamage();
-                    (rangedWeapon).useAmmo();
-                    return Attack.ATTACK_RANGE;
-                } else {
-                    return Attack.NO_AMMO;
-                }
-            }
-            if (itemInPlayer != null) {
-                return Attack.NOT_EQUIPPED;
-            }
+        Weapon weapon = currentWeapon;
+        Enemy enemy = currentRoom.searchEnemy(itemName);
+        if (weapon == null) {
+            return Attack.NOT_EQUIPPED;
+        } else if (enemy == null) {
             return Attack.NO_ENEMY;
+        } else if (weapon.canUse()) {
+            weapon.useAmmo();
+            enemy.currentHealth(weapon.getDamage());
+            if (!enemy.enemyDeath()) {
+                currentHealth(enemy.getCurrentWeapon().getDamage());
+            } else {
+                return Attack.KILLED_ENEMY;
+            }
+            return Attack.ATTACK_ENEMY;
+        } else {
+            return Attack.NO_AMMO;
         }
-        return null;
     }
-
 
 }

@@ -7,4 +7,14 @@ public class MeleeWeapon extends Weapon {
     @Override
     public void useAmmo() {
     }
+
+    public Boolean canUse() {
+    return true;
+    }
+
+    @Override
+    public int getAmmunition() {
+        return 0;
+    }
 }
+

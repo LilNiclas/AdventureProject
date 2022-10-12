@@ -51,7 +51,7 @@ public class Map {
     private Item lamp = new Item("Lamp", ". Rusty oil lamp");
 
     //MeeleWeapons
-    private MeleeWeapon sword = new MeleeWeapon("Sword", 40);
+    private MeleeWeapon sword = new MeleeWeapon("Sword", 1000);
 
     //RangedWeapons
     private RangedWeapon gun = new RangedWeapon("Gun", 20, 2);
@@ -66,6 +66,7 @@ public class Map {
     public void setRooms() {
         //Rooms attributes
         //1
+        pirate.setRoom(wilderedHills);
         wilderedHills.setEast(desertIsland);
         wilderedHills.setSouth(overgrownIsland);
         wilderedHills.addItem(sword);
