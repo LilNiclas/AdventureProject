@@ -10,7 +10,7 @@ public class UserInterface {
 
     public void userInput() {
         boolean isRunning = true;
-        System.out.println("Welcome to 'Grandpa's Lost Treasure '");
+        System.out.println("Welcome to Grandpa's Lost Treasure ");
 
 
         while (isRunning && adventure.getPlayer().playerDeath()) {

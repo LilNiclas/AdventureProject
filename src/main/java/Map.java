@@ -48,23 +48,32 @@ public class Map {
 
 
     // Items
-    private Item lamp = new Item("Lamp", ". Rusty oil lamp");
+    private Item lamp = new Item("lamp", ". Rusty oil lamp");
+    private Item chest = new Item("chest", "A big chest that contains you grandfathers lost treasure");
 
     //MeeleWeapons
-    private MeleeWeapon sword = new MeleeWeapon("Sword", 40);
+    private MeleeWeapon bat = new MeleeWeapon("bat", 15);
 
     //RangedWeapons
-    private RangedWeapon gun = new RangedWeapon("Gun", 20, 2);
+    private RangedWeapon gun = new RangedWeapon("gun", 20, 2);
 
     //Enemy Weapons
-
+    private MeleeWeapon sword = new MeleeWeapon("sword", 40);
 
     //food item
-    private Food cheese = new Food(25, "Cheese", ". A big block of cheese");
-    private Food water = new Food(-15, "Dirty water", ". A bucket of dirty water");
+    private Food cheese = new Food(25, "cheese", ". A big block of cheese");
+    private Food water = new Food(-15, "dirty water", ". A bucket of dirty water");
+    private Food beans = new Food(20, "beans", "A can of baked beans");
+    private Food coconut = new Food(50,"coconut", "A huge overgrown coconut");
+    private Food frozenWater = new Food(10, "frozenwater", "A bottle of water that is frozen");
+    private Food berries = new Food(25, "berries", "A bush with a lot of bribe berries, ready to be eaten ");
+    private Food flesh = new Food(-25, "flesh", "Rotten flesh from a death body");
+    private Food meat = new Food(40, "meat", "dried meat that contains a lot of protein");
+    private Food basket = new Food(30, "basket", "A basket full of fresh fruits" );
+
 
     //Enemy "name", health, dmg
-    private Enemy pirate = new Enemy("Pirate", 60, sword);
+    private Enemy pirate = new Enemy("pirate", 60, sword);
 
     public void setRooms() {
         //Rooms attributes
@@ -72,36 +81,55 @@ public class Map {
         pirate.setRoom(wilderedHills);
         wilderedHills.setEast(desertIsland);
         wilderedHills.setSouth(overgrownIsland);
-        wilderedHills.addItem(sword);
+
+        wilderedHills.addItem(bat);
         wilderedHills.addItem(cheese);
-        wilderedHills.addItem(gun);
-        wilderedHills.addEnemy(pirate);
+        wilderedHills.addItem(lamp);
+
         //2
         desertIsland.setEast(ships);
         desertIsland.setWest(wilderedHills);
+
+        desertIsland.addItem(flesh);
+
         //3
         ships.setEast(desertIsland);
         ships.setSouth(rockyHill);
+
+        ships.addItem(water);
+        ships.addItem(beans);
+
         //4
         overgrownIsland.setNorth(wilderedHills);
         overgrownIsland.setSouth(iceIsland);
+
+        overgrownIsland.addItem(coconut);
+
         //5
         bossfightVulkano.setSouth(amazonianIsland);
+
         //6
         rockyHill.setNorth(ships);
         rockyHill.setSouth(pirateIsland);
+
+        rockyHill.addItem(berries);
+
         //7
         iceIsland.setNorth(overgrownIsland);
         iceIsland.setEast(amazonianIsland);
-        iceIsland.addItem(water);
-        iceIsland.addItem(lamp);
+
+        iceIsland.addItem(frozenWater);
         //8
         amazonianIsland.setNorth(bossfightVulkano);
         amazonianIsland.setEast(pirateIsland);
         amazonianIsland.setWest(iceIsland);
+
+        amazonianIsland.addItem(basket);
         //9
         pirateIsland.setNorth(rockyHill);
         pirateIsland.setWest(amazonianIsland);
+
+        pirateIsland.addItem(meat);
     }
 
     public Room getStartRoom() {
