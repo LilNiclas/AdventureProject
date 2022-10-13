@@ -41,9 +41,9 @@ public class Enemy {
 
     public boolean enemyDeath() {
         if (health <= 0) {
+            room.removeEnemy(name);
             room.addEnemyItem(currentWeapon);
             room.addItem(food);
-            room.removeEnemy(name);
             return true;
         } else {
             return false;
